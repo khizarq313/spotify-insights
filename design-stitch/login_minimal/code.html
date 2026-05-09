@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - Spotify Insights</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#353944",
+                        "inverse-primary": "#006e2c",
+                        "surface-dim": "#0f131d",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "background": "#0f131d",
+                        "primary-fixed-dim": "#34e36a",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-error": "#690005",
+                        "on-primary": "#003913",
+                        "on-background": "#dfe2f1",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#00531f",
+                        "on-tertiary": "#571f08",
+                        "surface": "#0f131d",
+                        "on-secondary-fixed-variant": "#434752",
+                        "tertiary": "#ffccbb",
+                        "on-primary-container": "#005721",
+                        "on-tertiary-fixed-variant": "#73341c",
+                        "tertiary-container": "#ffa585",
+                        "outline": "#859583",
+                        "primary-fixed": "#69ff89",
+                        "surface-container-low": "#171b26",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dfe2f1",
+                        "surface-container-lowest": "#0a0e18",
+                        "primary-container": "#1ed760",
+                        "on-surface": "#dfe2f1",
+                        "inverse-on-surface": "#2c303b",
+                        "secondary": "#c3c6d4",
+                        "outline-variant": "#3c4a3c",
+                        "surface-tint": "#34e36a",
+                        "secondary-container": "#454954",
+                        "surface-container": "#1b1f2a",
+                        "secondary-fixed": "#dfe2f0",
+                        "on-secondary-container": "#b5b8c6",
+                        "surface-container-highest": "#313540",
+                        "on-tertiary-container": "#793820",
+                        "error-container": "#93000a",
+                        "surface-variant": "#313540",
+                        "on-secondary-fixed": "#171b25",
+                        "on-surface-variant": "#bbcbb8",
+                        "primary": "#4cf479",
+                        "on-secondary": "#2c303b",
+                        "on-primary-fixed": "#002108",
+                        "secondary-fixed-dim": "#c3c6d4",
+                        "surface-container-high": "#262a35"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "lg": "24px",
+                        "xl": "48px",
+                        "md": "16px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Geist Sans"],
+                        "mono-label": ["Geist Mono"],
+                        "h1": ["Geist Sans"],
+                        "label-md": ["Geist Sans"],
+                        "h3": ["Geist Sans"],
+                        "h2": ["Geist Sans"],
+                        "body-md": ["Geist Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "mono-label": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h1": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "h3": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}],
+                        "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Geist Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex items-center justify-center p-gutter selection:bg-primary-container selection:text-surface">
+<main class="w-full max-w-sm">
+<!-- Level 1 Surface Container -->
+<div class="bg-surface-container-low border border-surface-bright p-xl flex flex-col items-center text-center">
+<!-- Branding / Header -->
+<div class="flex flex-col items-center gap-sm mb-lg">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container-highest border border-surface-bright mb-sm">
+<span class="material-symbols-outlined text-primary-container" style="font-size: 24px;">graphic_eq</span>
+</div>
+<h1 class="font-h1 text-h1 text-on-background">Spotify Insights</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px]">
+                    Authenticate to access advanced telemetry and raw listening data.
+                </p>
+</div>
+<!-- Primary Action -->
+<button class="w-full flex items-center justify-center gap-sm bg-primary-container text-surface px-md py-3 rounded-none font-label-md text-label-md hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background" type="button">
+                Connect with Spotify
+                <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+<!-- Metadata / Footer Links -->
+<div class="mt-xl flex flex-col gap-sm">
+<p class="font-mono-label text-mono-label text-surface-bright">SECURE OAUTH 2.0 CONNECTION</p>
+<div class="flex items-center justify-center gap-md font-mono-label text-mono-label text-on-surface-variant">
+<a class="hover:text-primary-container transition-colors underline decoration-surface-bright underline-offset-4" href="#">Terms</a>
+<span class="text-surface-bright">|</span>
+<a class="hover:text-primary-container transition-colors underline decoration-surface-bright underline-offset-4" href="#">Privacy</a>
+</div>
+</div>
+</div>
+</main>
+</body></html>

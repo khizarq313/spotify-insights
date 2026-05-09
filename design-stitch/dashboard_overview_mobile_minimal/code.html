@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SonicTrack - Minimal Dashboard Overview</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c3c6d4",
+                        "on-tertiary": "#571f08",
+                        "surface": "#0f131d",
+                        "secondary-fixed": "#dfe2f0",
+                        "background": "#0f131d",
+                        "surface-container-highest": "#313540",
+                        "tertiary": "#ffccbb",
+                        "on-primary": "#003913",
+                        "on-secondary": "#2c303b",
+                        "inverse-surface": "#dfe2f1",
+                        "on-primary-container": "#005721",
+                        "tertiary-fixed": "#ffdbcf",
+                        "outline": "#859583",
+                        "on-surface-variant": "#bbcbb8",
+                        "on-primary-fixed": "#002108",
+                        "on-tertiary-container": "#793820",
+                        "on-primary-fixed-variant": "#00531f",
+                        "surface-dim": "#0f131d",
+                        "surface-variant": "#313540",
+                        "on-error": "#690005",
+                        "surface-tint": "#34e36a",
+                        "on-secondary-container": "#b5b8c6",
+                        "surface-container-low": "#171b26",
+                        "primary-fixed-dim": "#34e36a",
+                        "primary": "#4cf479",
+                        "on-background": "#dfe2f1",
+                        "surface-bright": "#353944",
+                        "on-tertiary-fixed": "#380d00",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "surface-container": "#1b1f2a",
+                        "on-secondary-fixed-variant": "#434752",
+                        "outline-variant": "#3c4a3c",
+                        "on-secondary-fixed": "#171b25",
+                        "secondary-container": "#454954",
+                        "secondary": "#c3c6d4",
+                        "surface-container-lowest": "#0a0e18",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006e2c",
+                        "tertiary-container": "#ffa585",
+                        "on-tertiary-fixed-variant": "#73341c",
+                        "on-surface": "#dfe2f1",
+                        "inverse-on-surface": "#2c303b",
+                        "primary-container": "#1ed760",
+                        "surface-container-high": "#262a35",
+                        "primary-fixed": "#69ff89"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "margin": "24px",
+                        "xl": "48px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["Geist Mono", "monospace"],
+                        "body-lg": ["Geist Sans", "sans-serif"],
+                        "label-md": ["Geist Sans", "sans-serif"],
+                        "h1": ["Geist Sans", "sans-serif"],
+                        "h3": ["Geist Sans", "sans-serif"],
+                        "h2": ["Geist Sans", "sans-serif"],
+                        "body-md": ["Geist Sans", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h3": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom styles for absolute flatness and scrollbars if needed */
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md text-body-md pb-xl md:hidden">
+<!-- TopNavBar (Mobile Adaptation) -->
+<header class="fixed top-0 left-0 w-full h-16 px-gutter bg-surface-container-low flex justify-between items-center z-50 transition-colors">
+<div class="font-h2 text-h2 text-primary-container font-extrabold tracking-tight uppercase">SonicTrack</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-on-surface active:opacity-80 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface active:opacity-80 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-16 px-gutter mt-lg">
+<!-- Header -->
+<div class="mb-lg">
+<h1 class="font-h1 text-h1 text-on-surface">Overview</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-unit">Your performance at a glance.</p>
+</div>
+<!-- Metrics Stack (Absolute Flatness) -->
+<div class="flex flex-col gap-sm mb-xl">
+<!-- Metric: Listening Time -->
+<div class="bg-surface-container-low border border-surface-bright p-md flex items-start justify-between">
+<div>
+<div class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-widest mb-sm">Listening Time</div>
+<div class="font-h1 text-h1 text-on-surface">1,420 <span class="font-body-md text-body-md text-on-surface-variant ml-unit">hrs</span></div>
+</div>
+<div class="w-8 h-8 flex items-center justify-center bg-surface-variant border border-surface-bright">
+<span class="material-symbols-outlined text-primary-container text-[18px]">headphones</span>
+</div>
+</div>
+<!-- Metric: Top Artist -->
+<div class="bg-surface-container-low border border-surface-bright p-md flex items-start justify-between">
+<div>
+<div class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-widest mb-sm">Top Artist</div>
+<div class="font-h2 text-h2 text-on-surface mt-sm">Echo Vector</div>
+</div>
+<div class="w-8 h-8 flex items-center justify-center bg-surface-variant border border-surface-bright">
+<span class="material-symbols-outlined text-primary-container text-[18px]">mic</span>
+</div>
+</div>
+<!-- Metric: Active Streak -->
+<div class="bg-surface-container-low border border-surface-bright p-md flex items-start justify-between">
+<div>
+<div class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-widest mb-sm">Active Streak</div>
+<div class="font-h1 text-h1 text-on-surface">14 <span class="font-body-md text-body-md text-on-surface-variant ml-unit">days</span></div>
+</div>
+<div class="w-8 h-8 flex items-center justify-center bg-surface-variant border border-surface-bright">
+<span class="material-symbols-outlined text-primary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+</div>
+</div>
+<!-- Recent Top Tracks Table -->
+<section class="mb-xl">
+<div class="flex justify-between items-end mb-md">
+<h2 class="font-h3 text-h3 text-on-surface">Recent Top Tracks</h2>
+<button class="font-mono-label text-mono-label text-primary-container uppercase tracking-widest hover:underline">View All</button>
+</div>
+<div class="border border-surface-bright bg-surface-container-low flex flex-col">
+<!-- Table Header (Hidden visually on mobile, implied) -->
+<!-- Row 1: Active/Highlight -->
+<div class="flex items-center p-sm border-b border-surface-bright bg-surface-container-highest border-l-[3px] border-l-primary-container">
+<div class="w-10 h-10 border border-surface-bright shrink-0 mr-md overflow-hidden bg-surface-variant">
+<img alt="Album Art" class="w-full h-full object-cover grayscale opacity-80" data-alt="A macro photograph of an analog synthesizer circuit board, bathed in stark, high-contrast neon green and deep black lighting. The metallic components cast sharp, brutalist shadows, reflecting a gritty, utilitarian cyberpunk aesthetic. The overall mood is cold, technical, and heavily engineered, fitting perfectly within a dark-mode SaaS environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGqBygNqTsCEgiZw6wDiVFRm6Sqn94itb1_yGTq16CluDzUF3E5bCvJTSXprEfFMxR9zU338GCCIk1uD1ier8JRj9dHUAc0L0kRRJ5hwpyrm6TEk4E9taxHEbg7wfaeDAOsDh4SmCZc6Vf74ZXmEip74_0nIHbw85aSm9Xb7BcA0RkiwjNxresALlS68NGrwUMYMlhGPpZ9BayYN3E5arNi1wUJT7VdTrpAeuProbfVZmw5lly-iBJh1V3cFZui2cenJ7M4FFCpgEv"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-label-md text-label-md text-on-surface truncate">Neural Override</div>
+<div class="font-mono-label text-mono-label text-on-surface-variant mt-unit truncate">Echo Vector · 4:12</div>
+</div>
+<div class="font-mono-label text-mono-label text-primary-container ml-md flex items-center shrink-0">
+<span class="material-symbols-outlined text-[14px] mr-unit">trending_up</span>
+                        8.4k
+                    </div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center p-sm border-b border-surface-bright hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="w-10 h-10 border border-surface-bright shrink-0 mr-md overflow-hidden bg-surface-variant">
+<img alt="Album Art" class="w-full h-full object-cover grayscale opacity-80" data-alt="A minimalist abstract geometric composition featuring stark, intersecting monochromatic grids on a deep slate gray background. The lines are razor-sharp, communicating absolute precision and flat, zero-depth layering. Subtle hints of muted olive green break the severe grayscale palette, emphasizing a technical, data-driven atmosphere devoid of decorative flourishes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpLM0F6Tx9RuNfwGO707qrt7Y5aaef9qZPyaCI1Fr6GULpYbCRKjlnlhSK0g_kwgL8IfO7dpXODaIoIg12bJBBWYE6eGGh1ssvW-nZnIPXSjJ-JTlVOWP1XEedqr8vrbQZGCCKKOAdSFuC9v1oRS3b7_mTbHSJlmjFLT2dp76clFsh0__HljwAXfalG_b89ayWgR93h2HFtkhtNgGA9c6mQPVnW--X5a5vN8-oCxphQkiV5wWGFvDm6KVdo4pQWEFA8Y-GDmYJRKIG"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-label-md text-label-md text-on-surface truncate">Static Void</div>
+<div class="font-mono-label text-mono-label text-on-surface-variant mt-unit truncate">Null Point · 3:45</div>
+</div>
+<div class="font-mono-label text-mono-label text-on-surface-variant ml-md flex items-center shrink-0">
+<span class="material-symbols-outlined text-[14px] mr-unit">trending_flat</span>
+                        6.2k
+                    </div>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center p-sm border-surface-bright hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="w-10 h-10 border border-surface-bright shrink-0 mr-md overflow-hidden bg-surface-variant">
+<img alt="Album Art" class="w-full h-full object-cover grayscale opacity-80" data-alt="A stark, high-contrast black and white photograph of raw concrete architectural details, focusing on sharp angles and harsh structural lines. The brutalist forms are devoid of human presence, emphasizing an engineered, strictly functional aesthetic. Deep, pitch-black shadows provide extreme contrast against the pale gray concrete, aligning with a dark-mode minimalist theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJVN-c3YhJIvTnNPznyXJfGf4JX9_5Bu8FodtWHPz61yiz6I2u8Vbai3x5IrFZmGf4so4nt4TKWNnJP5hglXxsgM6pD8ZY3AbQ48cT56QC0CJ_nX94oQUMTQmGnaszD7FZvqtA8k8IrorCf-TXQvS212DvT_iKLgbj2wXZzMrf2pKW6jfLJZemSNx05ZTBqWjKb3Zr7B63l3ZYvgN9_mKFYU0_GZUIa86jAePb3YfTf9L105ofn0vyzU4aRR9TKwEeQBRbh71Bm2TG"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-label-md text-label-md text-on-surface truncate">Subroutine Beta</div>
+<div class="font-mono-label text-mono-label text-on-surface-variant mt-unit truncate">Logic Gates · 5:20</div>
+</div>
+<div class="font-mono-label text-mono-label text-error ml-md flex items-center shrink-0">
+<span class="material-symbols-outlined text-[14px] mr-unit">trending_down</span>
+                        4.1k
+                    </div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Pivot from SideNavBar JSON) -->
+<nav class="fixed bottom-0 left-0 w-full h-16 bg-surface-container-low flex justify-around items-center z-50 pb-safe">
+<!-- Active: Dashboard -->
+<div class="flex flex-col items-center gap-unit text-primary-container cursor-pointer w-full h-full justify-center bg-surface-container-highest border-t-2 border-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-mono-label text-mono-label text-[10px] font-bold">Dashboard</span>
+</div>
+<!-- Inactive: Analytics -->
+<div class="flex flex-col items-center gap-unit text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer w-full h-full justify-center">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-mono-label text-mono-label text-[10px]">Analytics</span>
+</div>
+<!-- Inactive: Artists -->
+<div class="flex flex-col items-center gap-unit text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer w-full h-full justify-center">
+<span class="material-symbols-outlined">person</span>
+<span class="font-mono-label text-mono-label text-[10px]">Artists</span>
+</div>
+<!-- Inactive: Revenue -->
+<div class="flex flex-col items-center gap-unit text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer w-full h-full justify-center hidden sm:flex">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-mono-label text-mono-label text-[10px]">Revenue</span>
+</div>
+<!-- Inactive: Reports -->
+<div class="flex flex-col items-center gap-unit text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer w-full h-full justify-center hidden sm:flex">
+<span class="material-symbols-outlined">description</span>
+<span class="font-mono-label text-mono-label text-[10px]">Reports</span>
+</div>
+</nav>
+</body></html>

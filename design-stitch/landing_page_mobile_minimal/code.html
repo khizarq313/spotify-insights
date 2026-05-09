@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SonicTrack - Music Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c3c6d4",
+                        "on-tertiary": "#571f08",
+                        "surface": "#0f131d",
+                        "secondary-fixed": "#dfe2f0",
+                        "background": "#0f131d",
+                        "surface-container-highest": "#313540",
+                        "tertiary": "#ffccbb",
+                        "on-primary": "#003913",
+                        "on-secondary": "#2c303b",
+                        "inverse-surface": "#dfe2f1",
+                        "on-primary-container": "#005721",
+                        "tertiary-fixed": "#ffdbcf",
+                        "outline": "#859583",
+                        "on-surface-variant": "#bbcbb8",
+                        "on-primary-fixed": "#002108",
+                        "on-tertiary-container": "#793820",
+                        "on-primary-fixed-variant": "#00531f",
+                        "surface-dim": "#0f131d",
+                        "surface-variant": "#313540",
+                        "on-error": "#690005",
+                        "surface-tint": "#34e36a",
+                        "on-secondary-container": "#b5b8c6",
+                        "surface-container-low": "#171b26",
+                        "primary-fixed-dim": "#34e36a",
+                        "primary": "#4cf479",
+                        "on-background": "#dfe2f1",
+                        "surface-bright": "#353944",
+                        "on-tertiary-fixed": "#380d00",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "surface-container": "#1b1f2a",
+                        "on-secondary-fixed-variant": "#434752",
+                        "outline-variant": "#3c4a3c",
+                        "on-secondary-fixed": "#171b25",
+                        "secondary-container": "#454954",
+                        "secondary": "#c3c6d4",
+                        "surface-container-lowest": "#0a0e18",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006e2c",
+                        "tertiary-container": "#ffa585",
+                        "on-tertiary-fixed-variant": "#73341c",
+                        "on-surface": "#dfe2f1",
+                        "inverse-on-surface": "#2c303b",
+                        "primary-container": "#1ed760",
+                        "surface-container-high": "#262a35",
+                        "primary-fixed": "#69ff89"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "margin": "24px",
+                        "xl": "48px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["Geist Mono"],
+                        "body-lg": ["Geist Sans"],
+                        "label-md": ["Geist Sans"],
+                        "h1": ["Geist Sans"],
+                        "h3": ["Geist Sans"],
+                        "h2": ["Geist Sans"],
+                        "body-md": ["Geist Sans"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h3": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Geist Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-surface">
+<!-- Mobile Header -->
+<header class="fixed top-0 left-0 right-0 h-[64px] bg-surface-container-low border-b border-surface-bright z-50 px-gutter flex items-center justify-between">
+<div class="font-h2 text-h2 text-primary-container tracking-tight">SonicTrack</div>
+<button class="bg-transparent border border-surface-bright text-on-surface font-label-md text-label-md px-md py-sm rounded-none hover:bg-surface-container-highest transition-colors">
+            Sign In
+        </button>
+</header>
+<main class="flex-1 pt-[64px] flex flex-col">
+<!-- Hero Section -->
+<section class="px-gutter pt-xl pb-xl border-b border-surface-bright flex flex-col gap-margin">
+<div class="flex flex-col gap-sm">
+<span class="font-mono-label text-mono-label text-primary-container uppercase">Data Infrastructure for Audio</span>
+<h1 class="font-h1 text-h1 text-on-surface">Absolute Clarity.<br/>Zero Noise.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-sm">
+                    The utilitarian standard for streaming analytics. Engineered for artists, managers, and labels who require high-density data without the visual clutter.
+                </p>
+</div>
+<div class="flex flex-col gap-sm mt-sm">
+<button class="bg-primary-container text-surface font-label-md text-label-md px-lg py-3 rounded-none w-full flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                    Initialize Workspace
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+<button class="bg-transparent border border-surface-bright text-on-surface font-label-md text-label-md px-lg py-3 rounded-none w-full hover:bg-surface-container-highest transition-colors">
+                    Read Documentation
+                </button>
+</div>
+<div class="mt-md w-full aspect-[4/3] bg-surface-container border border-surface-bright relative overflow-hidden flex items-center justify-center group">
+<div class="absolute inset-0 bg-surface-container-low opacity-80 mix-blend-multiply z-10"></div>
+<img alt="Data Interface" class="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-40 group-hover:opacity-60 transition-opacity duration-500" data-alt="A striking digital installation art piece featuring a highly technical, brutalist data dashboard interface. The scene is dominated by a dark mode aesthetic with deep blacks and charcoal grays, punctuated by intense, sharp lines of vibrant, glowing green data visualizations. The layout is strictly grid-based, focusing on information density and utilitarian precision, stripped of all decorative shadows or gradients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdGZ0yw-cvmR4LYiCO8m6YbM425ZC3DXCN1qeIq6QSuDbj8LsP0kOumSL-9JQ9VaAEjmNO9V4AhgT7OdQj-XZ6WxzO7Te7_xoZR07gSRLsdQ1PaD9GUWio5bU0_u0y9xPMLXyTTg7z1kSXOaXOpzASDcdi5C-hBc8B0LRcIyYYoutQ7-QdqL4gtdKd9eXik1N3z6-uXOiYIcXrsDjmA6yV9sOMxiegJpdkHiKbLA8xIxuMriev8vHnFwXX-DDOgPdM9wst9u7j23Oy"/>
+<!-- Overlay UI elements to reinforce the SaaS feel -->
+<div class="z-20 w-3/4 bg-surface border border-surface-bright p-md shadow-none flex flex-col gap-sm">
+<div class="flex justify-between items-center border-b border-surface-bright pb-sm">
+<span class="font-mono-label text-mono-label text-on-surface-variant">STREAM_VOL</span>
+<span class="font-mono-label text-mono-label text-primary-container">+14.2%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-none overflow-hidden">
+<div class="h-full bg-primary-container w-[68%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature List -->
+<section class="px-gutter py-xl border-b border-surface-bright flex flex-col gap-margin bg-surface-container-lowest">
+<div class="flex flex-col gap-sm">
+<h2 class="font-h2 text-h2 text-on-surface">Core Telemetry</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Granular insights delivered in a structured, actionable format.</p>
+</div>
+<div class="flex flex-col gap-md">
+<!-- Feature 1 -->
+<div class="bg-surface border border-surface-bright p-md flex flex-col gap-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-surface-bright"></div>
+<span class="material-symbols-outlined text-primary-container text-h2 mb-xs">monitoring</span>
+<h3 class="font-h3 text-h3 text-on-surface">Listening Trends</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Track aggregate play counts and retention metrics with uncompromised precision across custom temporal ranges.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface border border-surface-bright p-md flex flex-col gap-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-surface-bright"></div>
+<span class="material-symbols-outlined text-primary-container text-h2 mb-xs">group</span>
+<h3 class="font-h3 text-h3 text-on-surface">Top Artists</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Isolate performance vectors for key acts within your roster. Cross-reference geographical dispersion data.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface border border-surface-bright p-md flex flex-col gap-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-surface-bright"></div>
+<span class="material-symbols-outlined text-primary-container text-h2 mb-xs">donut_small</span>
+<h3 class="font-h3 text-h3 text-on-surface">Genre Breakdown</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Algorithmic categorization of listener habits to map stylistic overlap and identify adjacent market opportunities.</p>
+</div>
+</div>
+</section>
+<!-- Pricing Cards -->
+<section class="px-gutter py-xl flex flex-col gap-margin">
+<div class="flex flex-col gap-sm items-center text-center">
+<h2 class="font-h2 text-h2 text-on-surface">Access Tiers</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Transparent pricing. No hidden resource limits.</p>
+</div>
+<div class="flex flex-col gap-lg mt-sm">
+<!-- Pro Tier (Primary Focus) -->
+<div class="bg-surface-container-low border border-primary-container p-lg flex flex-col relative">
+<div class="absolute top-0 right-0 bg-primary-container text-surface font-mono-label text-mono-label px-2 py-1 transform translate-x-[1px] -translate-y-[1px]">
+                        RECOMMENDED
+                    </div>
+<h3 class="font-h3 text-h3 text-on-surface">Pro License</h3>
+<div class="flex items-baseline gap-xs mt-sm mb-lg">
+<span class="font-h1 text-h1 text-primary-container">$49</span>
+<span class="font-body-md text-body-md text-on-surface-variant">/ mo</span>
+</div>
+<ul class="flex flex-col gap-md mb-xl flex-1">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-body-md text-body-md text-on-surface">Real-time telemetry stream</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-body-md text-body-md text-on-surface">Full historic data retention</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-body-md text-body-md text-on-surface">API access (50k req/mo)</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-body-md text-body-md text-on-surface">Custom CSV/JSON exports</span>
+</li>
+</ul>
+<button class="bg-primary-container text-surface font-label-md text-label-md py-3 w-full rounded-none hover:opacity-90 transition-opacity">
+                        Select Pro License
+                    </button>
+</div>
+<!-- Basic Tier -->
+<div class="bg-surface border border-surface-bright p-lg flex flex-col">
+<h3 class="font-h3 text-h3 text-on-surface">Standard Protocol</h3>
+<div class="flex items-baseline gap-xs mt-sm mb-lg">
+<span class="font-h1 text-h1 text-on-surface">$0</span>
+<span class="font-body-md text-body-md text-on-surface-variant">/ mo</span>
+</div>
+<ul class="flex flex-col gap-md mb-xl flex-1">
+<li class="flex items-start gap-sm opacity-70">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-body-md text-body-md text-on-surface-variant">24hr batch updates</span>
+</li>
+<li class="flex items-start gap-sm opacity-70">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-body-md text-body-md text-on-surface-variant">30-day data retention</span>
+</li>
+<li class="flex items-start gap-sm opacity-70">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Standard dashboard views</span>
+</li>
+</ul>
+<button class="bg-transparent border border-surface-bright text-on-surface font-label-md text-label-md py-3 w-full rounded-none hover:bg-surface-container-highest transition-colors">
+                        Deploy Standard
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Simple Footer -->
+<footer class="border-t border-surface-bright bg-surface-container-low px-gutter py-lg mt-auto">
+<div class="flex flex-col gap-md">
+<div class="font-h3 text-h3 text-on-surface">SonicTrack</div>
+<div class="flex gap-margin font-body-md text-body-md text-on-surface-variant">
+<a class="hover:text-primary-container transition-colors" href="#">Terms</a>
+<a class="hover:text-primary-container transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary-container transition-colors" href="#">Status</a>
+</div>
+<div class="font-mono-label text-mono-label text-surface-bright mt-sm">
+                SYS.VER 2.4.1
+            </div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SonicTrack Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#c3c6d4",
+                      "on-tertiary": "#571f08",
+                      "surface": "#0f131d",
+                      "secondary-fixed": "#dfe2f0",
+                      "background": "#0f131d",
+                      "surface-container-highest": "#313540",
+                      "tertiary": "#ffccbb",
+                      "on-primary": "#003913",
+                      "on-secondary": "#2c303b",
+                      "inverse-surface": "#dfe2f1",
+                      "on-primary-container": "#005721",
+                      "tertiary-fixed": "#ffdbcf",
+                      "outline": "#859583",
+                      "on-surface-variant": "#bbcbb8",
+                      "on-primary-fixed": "#002108",
+                      "on-tertiary-container": "#793820",
+                      "on-primary-fixed-variant": "#00531f",
+                      "surface-dim": "#0f131d",
+                      "surface-variant": "#313540",
+                      "on-error": "#690005",
+                      "surface-tint": "#34e36a",
+                      "on-secondary-container": "#b5b8c6",
+                      "surface-container-low": "#171b26",
+                      "primary-fixed-dim": "#34e36a",
+                      "primary": "#4cf479",
+                      "on-background": "#dfe2f1",
+                      "surface-bright": "#353944",
+                      "on-tertiary-fixed": "#380d00",
+                      "tertiary-fixed-dim": "#ffb59b",
+                      "surface-container": "#1b1f2a",
+                      "on-secondary-fixed-variant": "#434752",
+                      "outline-variant": "#3c4a3c",
+                      "on-secondary-fixed": "#171b25",
+                      "secondary-container": "#454954",
+                      "secondary": "#c3c6d4",
+                      "surface-container-lowest": "#0a0e18",
+                      "error": "#ffb4ab",
+                      "error-container": "#93000a",
+                      "on-error-container": "#ffdad6",
+                      "inverse-primary": "#006e2c",
+                      "tertiary-container": "#ffa585",
+                      "on-tertiary-fixed-variant": "#73341c",
+                      "on-surface": "#dfe2f1",
+                      "inverse-on-surface": "#2c303b",
+                      "primary-container": "#1ed760",
+                      "surface-container-high": "#262a35",
+                      "primary-fixed": "#69ff89"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "lg": "24px",
+                      "gutter": "16px",
+                      "md": "16px",
+                      "unit": "4px",
+                      "margin": "24px",
+                      "xl": "48px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "mono-label": [
+                              "Geist Mono"
+                      ],
+                      "body-lg": [
+                              "Geist Sans"
+                      ],
+                      "label-md": [
+                              "Geist Sans"
+                      ],
+                      "h1": [
+                              "Geist Sans"
+                      ],
+                      "h3": [
+                              "Geist Sans"
+                      ],
+                      "h2": [
+                              "Geist Sans"
+                      ],
+                      "body-md": [
+                              "Geist Sans"
+                      ]
+              },
+              "fontSize": {
+                      "mono-label": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h1": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h3": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex antialiased">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full py-lg fixed left-0 top-0 h-screen w-64 border-r border-surface-bright bg-background">
+<div class="px-gutter mb-xl flex flex-col gap-sm">
+<span class="font-h2 text-h2 text-primary-container">SonicTrack</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Pro Dashboard</span>
+</div>
+<ul class="flex flex-col gap-unit flex-grow px-sm">
+<li>
+<a class="bg-surface-container-highest text-primary border-l-2 border-primary-container px-4 py-3 flex items-center gap-sm cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view" style="font-variation-settings: 'FILL' 0;">grid_view</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all flex items-center gap-sm cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="insights" style="font-variation-settings: 'FILL' 0;">insights</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all flex items-center gap-sm cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-md text-label-md">Artists</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all flex items-center gap-sm cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 0;">payments</span>
+<span class="font-label-md text-label-md">Revenue</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all flex items-center gap-sm cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="description" style="font-variation-settings: 'FILL' 0;">description</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto px-sm flex flex-col gap-unit pt-lg border-t border-surface-bright">
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all flex items-center gap-sm cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="help" style="font-variation-settings: 'FILL' 0;">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all flex items-center gap-sm cursor-pointer" href="#">
+<span class="material-symbols-outlined" data-icon="logout" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-64 min-w-0">
+<!-- TopNavBar (Tablet/Desktop) -->
+<header class="hidden md:flex justify-between items-center h-16 px-gutter w-full bg-surface-container-low border-b border-surface-bright sticky top-0 z-10">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="w-full bg-surface border border-surface-bright text-on-surface font-body-md py-sm pl-8 pr-sm focus:outline-none focus:border-primary transition-colors" placeholder="Search commands, artists..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer p-xs">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer p-xs">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<div class="w-8 h-8 bg-surface-bright border border-surface-bright overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A close up studio portrait of a modern professional in a minimalist setting. High contrast lighting with a dark, moody utilitarian vibe, reflecting a high-end digital brutalism aesthetic. Sharp focus on features with a clean, dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjOTH3x94Ia7S5mUekD5YwCl7r1S41MSi34QwqI3gKQxLvBboaZ9HwSZLd3z5Wk8p9K3YyIEBfU8BOnlzvUYLo_zhoZx7PLDglSo7RjGg6Ma-84SwPbPXWevifsrnS9UHNAjrI1jhvnp3obsC2pzLeZ2ZeQanvJ02zzNZy2y4w-rqjm8sfKicptLz_ZdyeLlsFiJSmus9W4qx5U80OH6E6gZ8ALx48okvP9n86i_mf2wCHZjSt5gUrIvQHrDcqFuXCBZkdhuod7Wj_"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-margin flex flex-col gap-margin max-w-7xl mx-auto w-full">
+<div class="flex flex-col gap-xs">
+<h1 class="font-h1 text-h1 text-on-surface">Overview</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Your listening metrics for the last 30 days.</p>
+</div>
+<!-- Metrics Grid: 2-Column for Tablet -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Metric Card 1 -->
+<div class="bg-surface-container-low border border-surface-bright p-md flex flex-col justify-between min-h-[140px]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Listening Time</span>
+<span class="material-symbols-outlined text-primary" data-icon="timer" style="font-variation-settings: 'FILL' 0;">timer</span>
+</div>
+<div class="flex items-end gap-sm">
+<span class="font-h1 text-h1 text-on-surface leading-none">142<span class="font-h3 text-h3 text-on-surface-variant ml-xs">hrs</span></span>
+<span class="font-mono-label text-mono-label text-primary flex items-center"><span class="material-symbols-outlined text-[16px]" data-icon="arrow_upward" style="font-variation-settings: 'FILL' 0;">arrow_upward</span> 12%</span>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface-container-low border border-surface-bright p-md flex flex-col justify-between min-h-[140px]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Top Artist</span>
+<span class="material-symbols-outlined text-primary" data-icon="mic" style="font-variation-settings: 'FILL' 0;">mic</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex flex-col">
+<span class="font-h2 text-h2 text-on-surface">Kendrick Lamar</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant">48 hours listened</span>
+</div>
+<div class="w-12 h-12 bg-surface-bright overflow-hidden">
+<img alt="Artist Avatar" class="w-full h-full object-cover" data-alt="A gritty, high-contrast black and white portrait of a musician holding a microphone. Minimalist composition with stark lighting, embodying a raw, digital brutalism aesthetic suitable for a high-end SaaS music dashboard. Deep blacks and stark whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNdtcIBkpGIESS8adX4Jd03KNgY9ETeqtBF5wzr5V6xSrv1BFkb1BIDz_ZC4H7P2L45dk2ceYkMB0m2nkyP_roH8JHyAr7FvB8eMSDF4sFSL6i65Ka3DjIymbvIgjA4GTaKx-SJEpYBuCPg_PaMx2ZAnefI3e2QeIjwr_qQgc01BmW_5m3lZKdpaHSRKM4Gn5IqMc7K1E_3sEfHlu7Nu5Ovp3eiTiNICA5OUagfnDgRQG_QlYRxvO0Hf-f0LHum6f7ORhPbTbQfyQQ"/>
+</div>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface-container-low border border-surface-bright p-md flex flex-col justify-between min-h-[140px]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Active Streak</span>
+<span class="material-symbols-outlined text-primary" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 0;">local_fire_department</span>
+</div>
+<div class="flex items-end gap-sm">
+<span class="font-h1 text-h1 text-on-surface leading-none">24<span class="font-h3 text-h3 text-on-surface-variant ml-xs">days</span></span>
+<span class="font-mono-label text-mono-label text-on-surface-variant">Peak: 31 days</span>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-surface-container-low border border-surface-bright p-md flex flex-col justify-between min-h-[140px]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Top Track</span>
+<span class="material-symbols-outlined text-primary" data-icon="music_note" style="font-variation-settings: 'FILL' 0;">music_note</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface border border-surface-bright overflow-hidden flex-shrink-0">
+<img alt="Album Art" class="w-full h-full object-cover" data-alt="Abstract minimal album cover art. A single, sharp geometric shape over a dark, textured background. High contrast, devoid of gradients, relying on stark color blocking in deep charcoal and muted tones. Utilitarian and severe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLiHTnv893iDsnK7WooJIBiUrGKBXY_rwalahsUwdWF6lRGVF8OFdy7F2MlE02rAezxIxiF5D4lsvvDnF4uLG-przgA8zQ9D_B9pytCRZdMUneAxkD-fT1PkYsUITNWH1yESYJgPoBrQ5Z1k5c5PyzylS6D-kooLwDey2BWZSZY3el9Ki4q9XStV3XO37ngQTWnWNEDsMsNPGq6XBpf0JJmwntwQqsuij9m5gDn33-pA0BsvJXPUbf5T3kbq9nHdjtTQRqAKrmiCgo"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-h3 text-h3 text-on-surface truncate">Not Like Us</span>
+<span class="font-body-md text-body-md text-on-surface-variant truncate">Kendrick Lamar</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Top Tracks Table -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<h2 class="font-h3 text-h3 text-on-surface">Recent Top Tracks</h2>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs">
+                        View All <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+<div class="bg-surface-container-low border border-surface-bright overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-bright bg-surface-container">
+<th class="font-mono-label text-mono-label text-on-surface-variant p-sm w-12 text-center">#</th>
+<th class="font-mono-label text-mono-label text-on-surface-variant p-sm">Track</th>
+<th class="font-mono-label text-mono-label text-on-surface-variant p-sm hidden sm:table-cell">Album</th>
+<th class="font-mono-label text-mono-label text-on-surface-variant p-sm text-right">Plays</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<!-- Row 1 Active -->
+<tr class="border-b border-surface-bright bg-[#1D2431] relative group">
+<td class="p-sm text-center text-primary font-bold">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-primary"></div>
+                                    1
+                                </td>
+<td class="p-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-surface border border-surface-bright overflow-hidden hidden sm:block flex-shrink-0">
+<img alt="Album Art" class="w-full h-full object-cover" data-alt="Abstract minimal album cover art. Sharp geometric shapes in deep black and white. High contrast, solid borders, no shadows. A very technical, brutalist digital music representation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdE1DxY1vyEX--3WFRCm_GsJ49qbb_rhVjLzpAa8YI1L_BGZ2rxEbocJSrqFL2LX2-tCyxXyjLRdw7HxkifEQy0sfdu8i5KecD7KU1MXLUn1F2Flr3bKzlEYGUMJr13AIOZH8HqGW2k6lWBOKXasHzL5d6prsaG4ekj8Y-md4o2rMfC49D4NpJH3BQXED-jjyr16oDX_EVD73LIvOeYI9j-e6FNDuREaM2Vmv1p_aqfKhiu9U7O9FDiF17oM68pjEsoyPaIGMVBTHM"/>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-medium truncate">Not Like Us</span>
+<span class="text-on-surface-variant text-[12px] truncate">Kendrick Lamar</span>
+</div>
+</div>
+</td>
+<td class="p-sm text-on-surface-variant hidden sm:table-cell truncate">Not Like Us (Single)</td>
+<td class="p-sm text-right font-mono-label text-on-surface">1,240</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-surface-bright hover:bg-surface-container transition-colors">
+<td class="p-sm text-center text-on-surface-variant">2</td>
+<td class="p-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-surface border border-surface-bright overflow-hidden hidden sm:block flex-shrink-0">
+<div class="w-full h-full bg-surface-bright flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]" data-icon="album" style="font-variation-settings: 'FILL' 0;">album</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface truncate">MILLION DOLLAR BABY</span>
+<span class="text-on-surface-variant text-[12px] truncate">Tommy Richman</span>
+</div>
+</div>
+</td>
+<td class="p-sm text-on-surface-variant hidden sm:table-cell truncate">MILLION DOLLAR BABY</td>
+<td class="p-sm text-right font-mono-label text-on-surface">982</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-surface-bright hover:bg-surface-container transition-colors">
+<td class="p-sm text-center text-on-surface-variant">3</td>
+<td class="p-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-surface border border-surface-bright overflow-hidden hidden sm:block flex-shrink-0">
+<div class="w-full h-full bg-surface-bright flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]" data-icon="album" style="font-variation-settings: 'FILL' 0;">album</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface truncate">Espresso</span>
+<span class="text-on-surface-variant text-[12px] truncate">Sabrina Carpenter</span>
+</div>
+</div>
+</td>
+<td class="p-sm text-on-surface-variant hidden sm:table-cell truncate">Espresso</td>
+<td class="p-sm text-right font-mono-label text-on-surface">845</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="p-sm text-center text-on-surface-variant">4</td>
+<td class="p-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-surface border border-surface-bright overflow-hidden hidden sm:block flex-shrink-0">
+<div class="w-full h-full bg-surface-bright flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]" data-icon="album" style="font-variation-settings: 'FILL' 0;">album</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface truncate">Good Luck, Babe!</span>
+<span class="text-on-surface-variant text-[12px] truncate">Chappell Roan</span>
+</div>
+</div>
+</td>
+<td class="p-sm text-on-surface-variant hidden sm:table-cell truncate">Good Luck, Babe!</td>
+<td class="p-sm text-right font-mono-label text-on-surface">721</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>

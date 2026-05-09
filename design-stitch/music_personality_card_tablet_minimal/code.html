@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SonicTrack - Music Personality</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&amp;family=Geist+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c3c6d4",
+                        "on-tertiary": "#571f08",
+                        "surface": "#0f131d",
+                        "secondary-fixed": "#dfe2f0",
+                        "background": "#0f131d",
+                        "surface-container-highest": "#313540",
+                        "tertiary": "#ffccbb",
+                        "on-primary": "#003913",
+                        "on-secondary": "#2c303b",
+                        "inverse-surface": "#dfe2f1",
+                        "on-primary-container": "#005721",
+                        "tertiary-fixed": "#ffdbcf",
+                        "outline": "#859583",
+                        "on-surface-variant": "#bbcbb8",
+                        "on-primary-fixed": "#002108",
+                        "on-tertiary-container": "#793820",
+                        "on-primary-fixed-variant": "#00531f",
+                        "surface-dim": "#0f131d",
+                        "surface-variant": "#313540",
+                        "on-error": "#690005",
+                        "surface-tint": "#34e36a",
+                        "on-secondary-container": "#b5b8c6",
+                        "surface-container-low": "#171b26",
+                        "primary-fixed-dim": "#34e36a",
+                        "primary": "#4cf479",
+                        "on-background": "#dfe2f1",
+                        "surface-bright": "#353944",
+                        "on-tertiary-fixed": "#380d00",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "surface-container": "#1b1f2a",
+                        "on-secondary-fixed-variant": "#434752",
+                        "outline-variant": "#3c4a3c",
+                        "on-secondary-fixed": "#171b25",
+                        "secondary-container": "#454954",
+                        "secondary": "#c3c6d4",
+                        "surface-container-lowest": "#0a0e18",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006e2c",
+                        "tertiary-container": "#ffa585",
+                        "on-tertiary-fixed-variant": "#73341c",
+                        "on-surface": "#dfe2f1",
+                        "inverse-on-surface": "#2c303b",
+                        "primary-container": "#1ed760",
+                        "surface-container-high": "#262a35",
+                        "primary-fixed": "#69ff89"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "margin": "24px",
+                        "xl": "48px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["Geist Mono"],
+                        "body-lg": ["Geist Sans"],
+                        "label-md": ["Geist Sans"],
+                        "h1": ["Geist Sans"],
+                        "h3": ["Geist Sans"],
+                        "h2": ["Geist Sans"],
+                        "body-md": ["Geist Sans"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h3": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0f131d; color: #dfe2f1; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-64 border-r border-surface-bright bg-background flex flex-col py-lg z-50 hidden md:flex">
+<div class="px-margin mb-xl">
+<h1 class="font-h2 text-h2 text-primary-container tracking-tighter">SonicTrack</h1>
+<p class="font-mono-label text-mono-label text-on-surface-variant mt-sm">Pro Dashboard</p>
+</div>
+<div class="flex-1 flex flex-col gap-unit px-sm">
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all cursor-pointer flex items-center gap-md" href="#">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="bg-surface-container-highest text-primary border-l-2 border-primary-container px-4 py-3 hover:bg-surface-container-low transition-all cursor-pointer flex items-center gap-md" href="#">
+<span class="material-symbols-outlined text-xl">insights</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all cursor-pointer flex items-center gap-md" href="#">
+<span class="material-symbols-outlined text-xl">person</span>
+<span class="font-label-md text-label-md">Artists</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all cursor-pointer flex items-center gap-md" href="#">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="font-label-md text-label-md">Revenue</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all cursor-pointer flex items-center gap-md" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</div>
+<div class="mt-auto px-sm flex flex-col gap-unit pt-lg border-t border-surface-bright">
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all cursor-pointer flex items-center gap-md" href="#">
+<span class="material-symbols-outlined text-xl">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container-low transition-all cursor-pointer flex items-center gap-md" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 ml-0 md:ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface-container-low border-b border-surface-bright flex justify-between items-center h-16 px-gutter w-full sticky top-0 z-40">
+<div class="flex items-center gap-md md:hidden">
+<span class="material-symbols-outlined cursor-pointer text-primary">menu</span>
+<h2 class="font-h2 text-h2 text-primary-container">SonicTrack</h2>
+</div>
+<div class="hidden md:flex items-center gap-sm bg-background border border-surface-bright px-md py-sm w-96 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none outline-none font-body-md text-body-md text-on-surface w-full placeholder-on-surface-variant placeholder:opacity-50 focus:ring-0 p-0" placeholder="Search data..." type="text"/>
+</div>
+<div class="flex items-center gap-lg">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-bright border border-surface-bright overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a user profile avatar. The avatar is a realistic photograph of a person, set against a dark minimalist background. The lighting is subtle and professional, matching a sleek SaaS interface. The image is cropped in a perfect circle, emphasizing a clean, brutalist-lite digital design aesthetic with high contrast and utilitarian simplicity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoxDfRq1iWRo7QQlrZ0MpD_mLzyq5OxjvdXR8EriWbbDaR1ZhEoCuno0wO3Pq-d3VjVe8I0S3iQC0qB-_f0uKbCgXJLuwxoZ5KmrDq_PL91-3MI9q1wgTcmCoEyf1l7uAbYb2r0Ayo8MnDQEeq-T74mp6We72k75SggseBTA3YiUrfBtMAOZCk9p6YIVQNbagX3j4pEeZu-LjAeJ8NPTtCEMmfjCgvPgGk8gG9zesfue4S6F__xSRlgaEvRiRIzn7JWkAOBvTkuk2J"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 p-margin md:p-xl flex justify-center items-start">
+<div class="w-full max-w-4xl flex flex-col gap-lg">
+<div class="flex justify-between items-end mb-sm">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface tracking-tight mb-xs">Listening Profile</h1>
+<p class="font-mono-label text-mono-label text-on-surface-variant">GENERATED: 2023.10.24 // USER_ID: 88492A</p>
+</div>
+<button class="bg-transparent text-on-surface border border-surface-bright font-label-md text-label-md px-md py-sm hover:bg-surface-container-highest transition-colors flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        EXPORT REPORT
+                    </button>
+</div>
+<!-- Personality Card - The Alchemist -->
+<div class="bg-surface-container-low border border-surface-bright p-margin md:p-xl relative overflow-hidden group">
+<!-- Subtle background texture/pattern -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #353944 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="relative z-10 flex flex-col gap-xl">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-surface-bright pb-lg gap-md">
+<div>
+<div class="font-mono-label text-mono-label text-primary tracking-widest uppercase mb-sm">Archetype Type_04</div>
+<h2 class="font-h1 text-h1 text-on-surface uppercase tracking-tight">The Alchemist</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-sm max-w-2xl">You masterfully blend disparate genres into a cohesive sonic identity. Your listening habits ignore conventional boundaries, synthesizing obscure electronics with classical acoustics.</p>
+</div>
+<div class="w-24 h-24 shrink-0 border border-primary flex justify-center items-center bg-surface">
+<span class="material-symbols-outlined text-[48px] text-primary" style="font-variation-settings: 'wght' 200;">science</span>
+</div>
+</div>
+<!-- Metrics Section -->
+<div class="flex flex-col gap-margin">
+<h3 class="font-mono-label text-mono-label text-on-surface-variant uppercase tracking-widest border-l-2 border-primary-container pl-sm">Sonic Metrics</h3>
+<div class="flex flex-col gap-md">
+<!-- Metric 1 -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-md text-label-md text-on-surface uppercase">Obscurity</span>
+<span class="font-mono-label text-mono-label text-primary">87%</span>
+</div>
+<div class="w-full h-2 bg-surface-bright">
+<div class="h-full bg-primary" style="width: 87%;"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-md text-label-md text-on-surface uppercase">Acousticness</span>
+<span class="font-mono-label text-mono-label text-primary">42%</span>
+</div>
+<div class="w-full h-2 bg-surface-bright">
+<div class="h-full bg-primary" style="width: 42%;"></div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-md text-label-md text-on-surface uppercase">Energy</span>
+<span class="font-mono-label text-mono-label text-primary">65%</span>
+</div>
+<div class="w-full h-2 bg-surface-bright">
+<div class="h-full bg-primary" style="width: 65%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- 2-Column Base Elements & Catalysts -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-margin pt-lg border-t border-surface-bright">
+<!-- Base Elements -->
+<div class="bg-surface border border-surface-bright p-md">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-[16px]">layers</span>
+                                    Base Elements
+                                </h4>
+<ul class="flex flex-col gap-xs font-mono-label text-mono-label text-on-surface">
+<li class="flex items-center gap-sm py-sm border-b border-surface-bright last:border-0">
+<span class="w-2 h-2 bg-surface-bright block"></span> Minimal Techno
+                                    </li>
+<li class="flex items-center gap-sm py-sm border-b border-surface-bright last:border-0">
+<span class="w-2 h-2 bg-surface-bright block"></span> Ambient Drone
+                                    </li>
+<li class="flex items-center gap-sm py-sm border-b border-surface-bright last:border-0">
+<span class="w-2 h-2 bg-surface-bright block"></span> Post-Punk
+                                    </li>
+</ul>
+</div>
+<!-- Catalysts -->
+<div class="bg-surface border border-surface-bright p-md">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+                                    Catalysts
+                                </h4>
+<div class="flex flex-wrap gap-sm">
+<span class="bg-surface-container-highest border border-surface-bright px-sm py-xs font-mono-label text-mono-label text-on-surface">IDM Rhythms</span>
+<span class="bg-surface-container-highest border border-surface-bright px-sm py-xs font-mono-label text-mono-label text-on-surface">Field Recordings</span>
+<span class="bg-surface-container-highest border border-surface-bright px-sm py-xs font-mono-label text-mono-label text-on-surface">Polyrhythms</span>
+<span class="bg-surface-container-highest border border-surface-bright px-sm py-xs font-mono-label text-mono-label text-on-surface">Distortion</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

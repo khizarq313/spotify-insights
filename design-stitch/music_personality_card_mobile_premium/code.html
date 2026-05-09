@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spotify Insights - Premium Music Personality</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#31353f",
+                        "on-error": "#690005",
+                        "surface-dim": "#0f131d",
+                        "on-tertiary-container": "#005261",
+                        "on-primary-fixed-variant": "#00531f",
+                        "tertiary-fixed": "#acedff",
+                        "outline": "#859583",
+                        "on-surface-variant": "#bbcbb8",
+                        "on-primary-fixed": "#002108",
+                        "on-primary-container": "#005721",
+                        "on-secondary": "#3c0091",
+                        "inverse-surface": "#dfe2f0",
+                        "on-primary": "#003913",
+                        "tertiary": "#7ee5ff",
+                        "surface-container-highest": "#31353f",
+                        "secondary-fixed": "#e9ddff",
+                        "background": "#0f131d",
+                        "surface": "#0f131d",
+                        "on-tertiary": "#003640",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-fixed": "#69ff89",
+                        "surface-container-high": "#262a34",
+                        "primary-container": "#1ed760",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-surface": "#dfe2f0",
+                        "inverse-on-surface": "#2c303b",
+                        "tertiary-container": "#3bcbea",
+                        "inverse-primary": "#006e2c",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0a0e17",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#571bc1",
+                        "secondary": "#d0bcff",
+                        "outline-variant": "#3c4a3c",
+                        "on-secondary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-container": "#1b2029",
+                        "surface-bright": "#353944",
+                        "on-tertiary-fixed": "#001f26",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "on-background": "#dfe2f0",
+                        "surface-container-low": "#171c25",
+                        "primary-fixed-dim": "#34e36a",
+                        "primary": "#4cf479",
+                        "surface-tint": "#34e36a",
+                        "on-secondary-container": "#c4abff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "64px",
+                        "gutter": "24px",
+                        "container-margin": "32px",
+                        "component-padding-x": "20px",
+                        "component-padding-y": "12px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "stat-sm": ["JetBrains Mono"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"],
+                        "headline-xl": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "stat-lg": ["JetBrains Mono"],
+                        "label-caps": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "stat-sm": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "stat-lg": ["24px", { "lineHeight": "1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+        .glow-primary {
+            box-shadow: 0 0 30px 5px rgba(76, 244, 121, 0.2);
+        }
+        .glow-secondary {
+            box-shadow: 0 0 40px 10px rgba(208, 188, 255, 0.15);
+        }
+        .glass-card {
+            background: rgba(22, 31, 51, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen relative overflow-hidden flex flex-col antialiased">
+<!-- Ambient Background Gradients -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] bg-gradient-to-br from-secondary-container/20 via-surface-container-lowest to-primary-container/10 blur-3xl rounded-full"></div>
+<div class="absolute bottom-[-20%] right-[-20%] w-[150%] h-[150%] bg-gradient-to-tl from-tertiary-container/10 via-transparent to-transparent blur-3xl rounded-full"></div>
+</div>
+<!-- Noise Texture Overlay -->
+<div class="absolute inset-0 z-0 noise-bg"></div>
+<!-- Main Content Canvas (Mobile Focused) -->
+<main class="flex-1 relative z-10 flex flex-col p-4 w-full max-w-md mx-auto h-screen overflow-hidden">
+<!-- Top App Bar (Mobile optimized, simpler than the predicted component for this specific card view) -->
+<header class="flex justify-between items-center py-4 px-2 shrink-0">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant/20">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase">Personality Profile</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant/20">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</header>
+<!-- The "Wrapped" Style Card -->
+<div class="flex-1 relative glass-card rounded-[32px] overflow-hidden flex flex-col mb-4 border-t-2 border-t-secondary/30 glow-secondary shadow-2xl">
+<!-- Internal Card Gradients -->
+<div class="absolute inset-0 bg-gradient-to-b from-secondary-container/40 via-surface/80 to-surface-container-lowest z-0 pointer-events-none"></div>
+<div class="relative z-10 flex flex-col h-full p-6">
+<!-- Top Elements: Type & Badge -->
+<div class="flex justify-between items-start mb-auto">
+<div>
+<div class="font-stat-sm text-stat-sm text-secondary mb-1 uppercase tracking-wider">Your Music Persona</div>
+<h1 class="font-display-lg text-display-lg text-primary-fixed drop-shadow-[0_0_15px_rgba(105,255,137,0.3)]">The<br/>Alchemist</h1>
+</div>
+<div class="w-12 h-12 rounded-full bg-secondary-container/50 border border-secondary/30 flex items-center justify-center backdrop-blur-md shadow-[0_0_20px_rgba(87,27,193,0.4)]">
+<span class="material-symbols-outlined text-secondary-fixed text-2xl" data-icon="science" data-weight="fill" style="font-variation-settings: 'FILL' 1;">science</span>
+</div>
+</div>
+<!-- Aura / Visualization Area -->
+<div class="relative w-full aspect-square my-6 flex items-center justify-center">
+<!-- Central Orb -->
+<div class="absolute w-3/4 h-3/4 rounded-full bg-gradient-to-tr from-secondary to-tertiary mix-blend-screen blur-xl opacity-60 animate-pulse" style="animation-duration: 4s;"></div>
+<div class="absolute w-1/2 h-1/2 rounded-full bg-gradient-to-br from-primary to-secondary mix-blend-screen blur-md opacity-80"></div>
+<!-- Decorative Elements -->
+<svg class="absolute inset-0 w-full h-full text-white/10" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="2 4" stroke-width="0.5"></circle>
+<circle cx="50" cy="50" fill="none" r="30" stroke="currentColor" stroke-width="0.5"></circle>
+</svg>
+<div class="z-20 text-center">
+<div class="font-stat-lg text-stat-lg text-on-surface">94%</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mt-1">Experimental Energy</div>
+</div>
+</div>
+<!-- Bottom Elements: Catalyst Tracks -->
+<div class="mt-auto">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 uppercase tracking-widest border-b border-white/10 pb-2">Catalyst Tracks</h3>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 group">
+<div class="w-10 h-10 rounded bg-surface-variant overflow-hidden shrink-0">
+<img alt="Album Cover" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A macro, abstract photograph of iridescent swirling liquids resembling a vinyl record groove. High-key neon lighting creating vibrant purple and cyan highlights against a deep black background. Professional modern art aesthetic suitable for a premium dark mode UI layer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXb6-R35uSNPmf3LIwan_u7xOAdjMbSaLA53ZBxSD7VJz3g9v6d6n7ELwaHBIxmj4EcLBvNR-zfLuoe3PnsYJhSEDwjwSDTRmvkbIx8WABvUQSdIhGZXNoD5GHpez1pHx7dja8FFBGENjfzRfAzc6c4f6z1RXq-EPvaUPmcqdrvPc5pRB5Q4FqSrSsdVIGNva2ksCUY0LwxEvZEnzxI59a5xfb7l6Qq5lcxlbphaE1r7eJnjeypfD0SG4JpUQKSf7ehKGk7uRsutvo"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-body-md text-on-surface truncate font-semibold">Gosh</p>
+<p class="font-stat-sm text-stat-sm text-on-surface-variant truncate">Jamie xx</p>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</li>
+<li class="flex items-center gap-3 group">
+<div class="w-10 h-10 rounded bg-surface-variant overflow-hidden shrink-0">
+<img alt="Album Cover" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="An abstract geometric 3D render featuring floating, translucent glass cubes and spheres in a dark void. Illuminated by a singular intense neon green light source. Clean, ultra-modern composition with a cinematic, high-contrast dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX3911KWUVJ3TPcnqYa6zBLdz_ctUay9IcsL_HDxEkYNUOCVNFKeTdJMD8jmqPN7A7BclFefBwOo1AzUS7GgxlVNqZrL3uUYcIZRwz_48EuPVcjg_iHkIxdmz4ioGWJdN7a-0IFzxyO0Q6oyL2dHR-pJmfMj0lzLjYFHHirNfNk9dmMkO8hFRjxDsKfil8mWJXhmBo9CAWR8STHIB_44ulDnxCVa2MQDAmAMD227EzV4bQVv-9ewXD9nWqWgS8Dz0M-WCeThV7cg3z"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-body-md text-on-surface truncate font-semibold">Xtal</p>
+<p class="font-stat-sm text-stat-sm text-on-surface-variant truncate">Aphex Twin</p>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Action Buttons (Bottom row outside card) -->
+<div class="flex gap-4 shrink-0 mb-2">
+<button class="flex-1 bg-primary text-on-primary font-bold py-3 px-6 rounded-full flex items-center justify-center gap-2 hover:bg-primary-fixed transition-colors glow-primary group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="share">share</span>
+                Share Persona
+            </button>
+<button class="w-12 h-12 shrink-0 bg-transparent border border-white/20 rounded-full flex items-center justify-center text-on-surface hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+</main>
+</body></html>

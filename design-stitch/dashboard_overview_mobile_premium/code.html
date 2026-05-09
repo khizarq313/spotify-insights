@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spotify Insights - Premium Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#31353f",
+                        "on-error": "#690005",
+                        "surface-dim": "#0f131d",
+                        "on-tertiary-container": "#005261",
+                        "on-primary-fixed-variant": "#00531f",
+                        "tertiary-fixed": "#acedff",
+                        "outline": "#859583",
+                        "on-surface-variant": "#bbcbb8",
+                        "on-primary-fixed": "#002108",
+                        "on-primary-container": "#005721",
+                        "on-secondary": "#3c0091",
+                        "inverse-surface": "#dfe2f0",
+                        "on-primary": "#003913",
+                        "tertiary": "#7ee5ff",
+                        "surface-container-highest": "#31353f",
+                        "secondary-fixed": "#e9ddff",
+                        "background": "#0f131d",
+                        "surface": "#0f131d",
+                        "on-tertiary": "#003640",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-fixed": "#69ff89",
+                        "surface-container-high": "#262a34",
+                        "primary-container": "#1ed760",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-surface": "#dfe2f0",
+                        "inverse-on-surface": "#2c303b",
+                        "tertiary-container": "#3bcbea",
+                        "inverse-primary": "#006e2c",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0a0e17",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#571bc1",
+                        "secondary": "#d0bcff",
+                        "outline-variant": "#3c4a3c",
+                        "on-secondary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-container": "#1b2029",
+                        "surface-bright": "#353944",
+                        "on-tertiary-fixed": "#001f26",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "on-background": "#dfe2f0",
+                        "surface-container-low": "#171c25",
+                        "primary-fixed-dim": "#34e36a",
+                        "primary": "#4cf479",
+                        "surface-tint": "#34e36a",
+                        "on-secondary-container": "#c4abff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "64px",
+                        "gutter": "24px",
+                        "container-margin": "32px",
+                        "component-padding-x": "20px",
+                        "component-padding-y": "12px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "stat-sm": ["JetBrains Mono"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"],
+                        "headline-xl": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "stat-lg": ["JetBrains Mono"],
+                        "label-caps": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "stat-sm": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "stat-lg": ["24px", { "lineHeight": "1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .noise-bg {
+            position: relative;
+        }
+        .noise-bg::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen noise-bg flex flex-col md:hidden pb-24 relative overflow-x-hidden">
+<!-- Ambient Glow Effects -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[80px] pointer-events-none z-0"></div>
+<!-- Mobile Top Header -->
+<header class="sticky top-0 z-40 bg-surface/50 backdrop-blur-xl flex justify-between items-center px-6 h-16">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">Spotify Insights</h1>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors focus-within:ring-2 focus-within:ring-primary rounded-full p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30 focus-within:ring-2 focus-within:ring-primary cursor-pointer">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A close-up, high-fashion portrait of a young woman bathed in moody, neon-lit cyberpunk lighting. Deep shadows contrast with vibrant streaks of electric blue and Spotify green light reflecting off her face. The style is highly polished, cinematic, and professional, perfectly suited for a premium music app profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCby7b1DSN8ll6XabZBPgl44Lcnd9SgMubdYSkeXFdlpoU7aOWB3S7A9OaO8HO91v_2uOH7qszOyNzP3VfUHUpn4yL7S9NbTQ9bEVi1f6_o2MqEKvOup4lRQo234qV5H-IO2CvDI4cwTC-Q1kLBIIRuOL5pVwh1MyQqTrP1LdZfK44IxEh55WHUX-S20RkHaoD8AliHK37KcYKdjs0CKW47lcQFx7oi9Si9cJ-KEPpph2yRMIQGObRhSnzNxgbcMPKuh7nD-tum4d7m"/>
+</div>
+</div>
+</header>
+<!-- Main Dashboard Content -->
+<main class="flex-1 px-6 pt-6 pb-8 space-y-6 relative z-10">
+<!-- Welcome Section -->
+<div class="space-y-1">
+<h2 class="font-headline-xl text-headline-xl text-on-surface">Overview</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Your premium analytics for this month.</p>
+</div>
+<!-- Listening Time Card (Glowing) -->
+<div class="bg-surface-container/70 backdrop-blur-[30px] border border-white/10 rounded-[24px] p-6 relative overflow-hidden group">
+<!-- Glow effect on hover -->
+<div class="absolute -inset-1 bg-gradient-to-b from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-2">Listening Time</h3>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface drop-shadow-[0_0_15px_rgba(76,244,121,0.15)]">142</span>
+<span class="font-stat-sm text-stat-sm text-primary">hrs</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(76,244,121,0.2)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">headphones</span>
+</div>
+</div>
+<!-- Mock Sparkline Chart -->
+<div class="h-16 w-full flex items-end gap-1.5 relative">
+<div class="absolute bottom-0 w-full h-[2px] bg-outline-variant/30"></div>
+<div class="w-1/6 bg-gradient-to-t from-primary/60 to-primary/20 rounded-t-sm h-[30%] relative group-hover:h-[35%] transition-all duration-300"></div>
+<div class="w-1/6 bg-gradient-to-t from-primary/60 to-primary/20 rounded-t-sm h-[50%] relative group-hover:h-[55%] transition-all duration-300"></div>
+<div class="w-1/6 bg-gradient-to-t from-primary/60 to-primary/20 rounded-t-sm h-[40%] relative group-hover:h-[45%] transition-all duration-300"></div>
+<div class="w-1/6 bg-gradient-to-t from-primary/60 to-primary/20 rounded-t-sm h-[80%] relative group-hover:h-[85%] transition-all duration-300"></div>
+<div class="w-1/6 bg-gradient-to-t from-primary/60 to-primary/20 rounded-t-sm h-[60%] relative group-hover:h-[65%] transition-all duration-300"></div>
+<div class="w-1/6 bg-primary rounded-t-sm h-[100%] relative shadow-[0_0_15px_rgba(76,244,121,0.5)]"></div>
+</div>
+</div>
+<!-- Streak Card -->
+<div class="bg-surface-container/70 backdrop-blur-[30px] border border-white/10 rounded-[24px] p-6 flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-gradient-to-br from-tertiary-container to-secondary-container flex items-center justify-center shadow-[0_0_30px_rgba(87,27,193,0.3)]">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-1">Current Streak</h3>
+<div class="font-stat-lg text-stat-lg text-on-surface">34 Days</div>
+<div class="font-stat-sm text-stat-sm text-tertiary mt-1">+12% vs last month</div>
+</div>
+</div>
+<!-- Top Artist & Track Bento Stack -->
+<div class="space-y-4">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mt-2 mb-4">Heavy Rotation</h3>
+<!-- Top Artist -->
+<div class="bg-surface-container/70 backdrop-blur-[30px] border border-white/10 rounded-[24px] p-4 flex items-center gap-4 group hover:bg-surface-container-high/80 transition-colors">
+<div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 relative">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<img alt="Top Artist" class="w-full h-full object-cover" data-alt="A moody, high-contrast concert photography shot of a musician performing on stage. The scene is illuminated by dramatic, deep blue and electric purple stage lights piercing through thick atmospheric fog. The aesthetic is raw, energetic, and perfectly fits a premium music analytics dashboard's dark mode visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhhS3Ch10rqPOE68V4RZBnBEs65_1lFZA-3nuxmcJ2Vtyz0G1J9kXTYZAvdcVZcRTlYXTJhSCsFT_AEQVk47sRlXH6jGsKqmEATwKxFVxa-vf79FH7HPFa616ZWd7hO_bD0Hs2gJ2BPNzYNVsgZdNMMWEb8MdS0rm5S-1I6JdKBU1d7a4yxnhWtloPzB0BW0J3zcgRdSNHBPsmCpmMurucYZ4wXotzEBLoGbQurA_9ScTXIx9kc0VfiC1x4U9QYL0-kmXTnUZ9zCcs"/>
+<div class="absolute bottom-1 right-1 bg-surface/80 backdrop-blur-sm rounded-full w-6 h-6 flex items-center justify-center z-20">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-label-caps text-label-caps text-primary mb-1">Top Artist</h4>
+<p class="font-body-lg text-body-lg text-on-surface font-semibold truncate">Midnight Syndicate</p>
+<p class="font-stat-sm text-stat-sm text-on-surface-variant mt-1">Top 0.5% of listeners</p>
+</div>
+</div>
+<!-- Top Track -->
+<div class="bg-surface-container/70 backdrop-blur-[30px] border border-white/10 rounded-[24px] p-4 flex items-center gap-4 group hover:bg-surface-container-high/80 transition-colors">
+<div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 relative">
+<img alt="Top Track" class="w-full h-full object-cover" data-alt="Abstract album art featuring fluid, swirling gradient shapes in vibrant neon green and deep indigo against an absolute black background. The textures are glossy and liquid-like, reflecting a futuristic, glassmorphic aesthetic designed for a high-end music streaming interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6d52iqeRWXBqgspQvEHClJlwdMNYpGgyg27QanTquEQuddsoUk6JOFRFypwW0XSOKoPO1DT5QEAR3Qq6xHcK1GZ0BUCwHYznL2ZCGShHN7Fjz8SFcDo8_wzwIEnOAdxX_qJKfSsCLGULzNEHc6cDg3funqkp-9AfbtN0cyYo5y74K0jQa9t-KrRNMAojJSqXRI2bowlz6ea4wDU0UEN5HdRDgPfUbyjwG2x_GxI-SIlsM4irJpHewuxZdNzSfPlXLyQ7dUth71aK2"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-label-caps text-label-caps text-tertiary mb-1">Top Track</h4>
+<p class="font-body-lg text-body-lg text-on-surface font-semibold truncate">Neon Currents</p>
+<p class="font-stat-sm text-stat-sm text-on-surface-variant mt-1">128 plays this month</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<!-- Derived from SideNavBar shared component structure for mobile context -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface-container-lowest/80 backdrop-blur-2xl z-50 px-4 py-3 pb-safe-area shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<ul class="flex justify-around items-center">
+<!-- Active Tab: Home -->
+<li class="flex flex-col items-center gap-1 min-w-[64px]">
+<a class="flex flex-col items-center gap-1 p-2 rounded-xl bg-surface-variant/20 text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl drop-shadow-[0_0_8px_rgba(76,244,121,0.4)]" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-[10px] tracking-wider text-primary font-bold">Home</span>
+</a>
+</li>
+<!-- Inactive Tab: Analytics -->
+<li class="flex flex-col items-center gap-1 min-w-[64px]">
+<a class="flex flex-col items-center gap-1 p-2 rounded-xl text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl opacity-70" style="font-variation-settings: 'FILL' 0;">analytics</span>
+<span class="font-label-caps text-[10px] tracking-wider opacity-70">Analytics</span>
+</a>
+</li>
+<!-- Inactive Tab: Top Tracks -->
+<li class="flex flex-col items-center gap-1 min-w-[64px]">
+<a class="flex flex-col items-center gap-1 p-2 rounded-xl text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl opacity-70" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="font-label-caps text-[10px] tracking-wider opacity-70">Top Tracks</span>
+</a>
+</li>
+<!-- Inactive Tab: Artists -->
+<li class="flex flex-col items-center gap-1 min-w-[64px]">
+<a class="flex flex-col items-center gap-1 p-2 rounded-xl text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl opacity-70" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-caps text-[10px] tracking-wider opacity-70">Artists</span>
+</a>
+</li>
+</ul>
+</nav>
+</body></html>

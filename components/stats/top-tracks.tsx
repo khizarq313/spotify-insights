@@ -1,0 +1,149 @@
+"use client"
+
+import { useState } from "react"
+import { useTopTracks } from "@/hooks/use-spotify"
+import { transformTrack } from "@/lib/spotify/transformers"
+import type { TimeRange } from "@/lib/spotify/types"
+import { Skeleton } from "@/components/ui/skeleton"
+import { ErrorBoundary } from "@/components/error-boundary"
+import { Music2, ExternalLink, AlertCircle } from "lucide-react"
+
+const TABS: { label: string; value: TimeRange }[] = [
+  { label: "4 Weeks",  value: "short_term"  },
+  { label: "6 Months", value: "medium_term" },
+  { label: "All Time", value: "long_term"   },
+]
+
+function TrackSkeleton() {
+  return (
+    <div className="flex items-center gap-3 px-2 py-2.5">
+      <Skeleton className="w-5 h-3 shrink-0" />
+      <Skeleton className="w-10 h-10 rounded shrink-0" />
+      <div className="flex-1 space-y-1.5">
+        <Skeleton className="h-3.5 w-40" />
+        <Skeleton className="h-3 w-28" />
+      </div>
+      <Skeleton className="h-3 w-8 hidden sm:block" />
+    </div>
+  )
+}
+
+function TopTracksInner() {
+  const [timeRange, setTimeRange] = useState<TimeRange>("short_term")
+  const { data, isLoading, isError, error } = useTopTracks(timeRange)
+  const tracks = data?.items.map(transformTrack) ?? []
+
+  return (
+    <div>
+      {/* Time range tabs */}
+      <div className="flex gap-0 mb-5 border-b border-border">
+        {TABS.map(tab => (
+          <button
+            key={tab.value}
+            onClick={() => setTimeRange(tab.value)}
+            className={`px-4 py-2.5 text-xs font-bold uppercase tracking-widest transition-colors border-b-2 -mb-px ${
+              timeRange === tab.value
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Error */}
+      {isError && (
+        <div className="flex items-center gap-2.5 border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive mb-4">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          {(error as Error)?.message ?? "Failed to load tracks."}
+        </div>
+      )}
+
+      {/* Skeletons */}
+      {isLoading && (
+        <div>
+          {Array.from({ length: 10 }).map((_, i) => <TrackSkeleton key={i} />)}
+        </div>
+      )}
+
+      {/* List */}
+      {!isLoading && !isError && (
+        <ol className="space-y-0.5">
+          {tracks.map((track, idx) => (
+            <li
+              key={track.id}
+              className="group flex items-center gap-3 px-2 py-2.5 hover:bg-[#1b1f2a] transition-colors border-b border-border/40 last:border-b-0"
+            >
+              {/* Rank */}
+              <span className="w-5 text-right text-xs text-muted-foreground shrink-0 tabular-nums font-mono">
+                {idx + 1}
+              </span>
+              {/* Album art */}
+              {track.albumImageUrl ? (
+                <img
+                  src={track.albumImageUrl}
+                  alt={track.albumName}
+                  className="w-10 h-10 rounded object-cover shrink-0"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="w-10 h-10 rounded bg-muted flex items-center justify-center shrink-0">
+                  <Music2 className="w-4 h-4 text-muted-foreground" />
+                </div>
+              )}
+              {/* Info */}
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium truncate leading-tight">{track.name}</p>
+                <p className="text-xs text-muted-foreground truncate leading-tight">
+                  {track.artistDisplay}
+                  {track.isExplicit && (
+                    <span className="ml-1.5 inline-flex items-center rounded px-1 text-[9px] font-bold bg-muted text-muted-foreground">
+                      E
+                    </span>
+                  )}
+                </p>
+              </div>
+              {/* Duration + popularity */}
+              <div className="hidden sm:flex flex-col items-end gap-1 shrink-0 w-16">
+                <span className="text-[11px] text-muted-foreground font-mono tabular-nums">
+                  {track.durationFormatted}
+                </span>
+                <div className="w-full h-0.5 rounded-full bg-border">
+                  <div
+                    className="h-0.5 rounded-full bg-primary"
+                    style={{ width: `${track.popularity}%` }}
+                  />
+                </div>
+              </div>
+              {/* Spotify link */}
+              <a
+                href={track.spotifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-primary p-1"
+                aria-label={`Open ${track.name} in Spotify`}
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </li>
+          ))}
+          {tracks.length === 0 && (
+            <li className="py-12 text-center">
+              <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">No tracks found</p>
+              <p className="text-[10px] text-muted-foreground mt-1">Try a different time range.</p>
+            </li>
+          )}
+        </ol>
+      )}
+    </div>
+  )
+}
+
+export function TopTracks() {
+  return (
+    <ErrorBoundary>
+      <TopTracksInner />
+    </ErrorBoundary>
+  )
+}

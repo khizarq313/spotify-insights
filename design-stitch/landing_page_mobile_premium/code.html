@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spotify Insights - Premium</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#31353f",
+                        "on-error": "#690005",
+                        "surface-dim": "#0f131d",
+                        "on-tertiary-container": "#005261",
+                        "on-primary-fixed-variant": "#00531f",
+                        "tertiary-fixed": "#acedff",
+                        "outline": "#859583",
+                        "on-surface-variant": "#bbcbb8",
+                        "on-primary-fixed": "#002108",
+                        "on-primary-container": "#005721",
+                        "on-secondary": "#3c0091",
+                        "inverse-surface": "#dfe2f0",
+                        "on-primary": "#003913",
+                        "tertiary": "#7ee5ff",
+                        "surface-container-highest": "#31353f",
+                        "secondary-fixed": "#e9ddff",
+                        "background": "#0f131d",
+                        "surface": "#0f131d",
+                        "on-tertiary": "#003640",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary-fixed": "#69ff89",
+                        "surface-container-high": "#262a34",
+                        "primary-container": "#1ed760",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-surface": "#dfe2f0",
+                        "inverse-on-surface": "#2c303b",
+                        "tertiary-container": "#3bcbea",
+                        "inverse-primary": "#006e2c",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0a0e17",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#571bc1",
+                        "secondary": "#d0bcff",
+                        "outline-variant": "#3c4a3c",
+                        "on-secondary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-container": "#1b2029",
+                        "surface-bright": "#353944",
+                        "on-tertiary-fixed": "#001f26",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "on-background": "#dfe2f0",
+                        "surface-container-low": "#171c25",
+                        "primary-fixed-dim": "#34e36a",
+                        "primary": "#4cf479",
+                        "surface-tint": "#34e36a",
+                        "on-secondary-container": "#c4abff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "64px",
+                        "gutter": "24px",
+                        "container-margin": "32px",
+                        "component-padding-x": "20px",
+                        "component-padding-y": "12px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "stat-sm": ["JetBrains Mono"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"],
+                        "headline-xl": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "stat-lg": ["JetBrains Mono"],
+                        "label-caps": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "stat-sm": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "stat-lg": ["24px", { "lineHeight": "1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #070B14;
+            color: #dfe2f0;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.03"/%3E%3C/svg%3E');
+            pointer-events: none;
+            z-index: 50;
+        }
+        .glow-effect {
+            box-shadow: 0 0 40px 10px rgba(76, 244, 121, 0.15);
+        }
+        .glass-card {
+            background: rgba(22, 31, 51, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden min-h-screen">
+<!-- Mobile Header (Transactional/Linear Intent, overriding global nav) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl border-b border-white/10 px-container-margin h-16 flex justify-between items-center">
+<div class="font-headline-lg text-headline-lg font-black text-primary">Spotify Insights</div>
+<a class="font-label-caps text-label-caps text-on-surface hover:text-primary transition-colors" href="#">LOGIN</a>
+</header>
+<main class="pt-16 pb-section-gap px-container-margin">
+<!-- Hero Section -->
+<section class="py-section-gap flex flex-col items-center text-center relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-gutter relative z-10">
+                Understand Your Music <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">Personality</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto mb-8 relative z-10">
+                Unlock deep, algorithmic insights into your listening habits. See the data behind your soundtrack.
+            </p>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded-full hover:shadow-[0_0_20px_rgba(76,244,121,0.4)] transition-all duration-300 relative z-10">
+                GET PREMIUM NOW
+            </button>
+</section>
+<!-- Feature Cards (Stacked for Mobile) -->
+<section class="flex flex-col gap-gutter mb-section-gap relative z-10">
+<!-- Feature 1 -->
+<div class="glass-card rounded-2xl p-6 flex flex-col gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Deep Data Dives</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Go beyond the basics. Analyze acousticness, danceability, and energy levels over time.</p>
+</div>
+<!-- Feature 2 -->
+<div class="glass-card rounded-2xl p-6 flex flex-col gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary mb-2">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Psychoacoustic Profiles</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Discover what your top tracks say about your mood patterns and personality traits.</p>
+</div>
+<!-- Feature 3 -->
+<div class="glass-card rounded-2xl p-6 flex flex-col gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-2">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">map</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Global Heatmaps</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">See where the artists you listen to the most are popular globally in real-time.</p>
+</div>
+</section>
+<!-- Pricing Tiers -->
+<section class="mb-section-gap relative z-10">
+<h2 class="font-headline-xl text-headline-xl text-center mb-gutter">Choose Your Insight Level</h2>
+<div class="flex flex-col gap-6">
+<!-- Basic Tier -->
+<div class="glass-card rounded-2xl p-6 border-outline-variant/30">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">BASIC</div>
+<div class="font-display-lg text-display-lg mb-4">$0<span class="font-body-md text-body-md text-on-surface-variant">/mo</span></div>
+<ul class="flex flex-col gap-3 mb-6 font-body-md text-body-md text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Top Tracks (Last 4 Weeks)</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Basic Artist Stats</li>
+</ul>
+<button class="w-full py-3 rounded-full border border-white/20 text-on-surface font-label-caps text-label-caps hover:bg-white/10 transition-colors">CURRENT PLAN</button>
+</div>
+<!-- Premium Tier -->
+<div class="glass-card rounded-2xl p-6 border-primary/50 relative overflow-hidden glow-effect">
+<div class="absolute top-0 right-0 bg-primary text-on-primary font-label-caps text-label-caps px-3 py-1 rounded-bl-lg">POPULAR</div>
+<div class="font-label-caps text-label-caps text-primary mb-2">PREMIUM</div>
+<div class="font-display-lg text-display-lg mb-4">$4.99<span class="font-body-md text-body-md text-on-surface-variant">/mo</span></div>
+<ul class="flex flex-col gap-3 mb-6 font-body-md text-body-md text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Unlimited History</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Mood &amp; Personality Analysis</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Genre Flow Charts</li>
+</ul>
+<button class="w-full py-3 rounded-full bg-primary text-on-primary font-label-caps text-label-caps hover:shadow-[0_0_15px_rgba(76,244,121,0.5)] transition-all">UPGRADE TO PREMIUM</button>
+</div>
+</div>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spotify Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#353944",
+                        "inverse-primary": "#006e2c",
+                        "surface-dim": "#0f131d",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "background": "#0f131d",
+                        "primary-fixed-dim": "#34e36a",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-error": "#690005",
+                        "on-primary": "#003913",
+                        "on-background": "#dfe2f1",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#00531f",
+                        "on-tertiary": "#571f08",
+                        "surface": "#0f131d",
+                        "on-secondary-fixed-variant": "#434752",
+                        "tertiary": "#ffccbb",
+                        "on-primary-container": "#005721",
+                        "on-tertiary-fixed-variant": "#73341c",
+                        "tertiary-container": "#ffa585",
+                        "outline": "#859583",
+                        "primary-fixed": "#69ff89",
+                        "surface-container-low": "#171b26",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dfe2f1",
+                        "surface-container-lowest": "#0a0e18",
+                        "primary-container": "#1ed760",
+                        "on-surface": "#dfe2f1",
+                        "inverse-on-surface": "#2c303b",
+                        "secondary": "#c3c6d4",
+                        "outline-variant": "#3c4a3c",
+                        "surface-tint": "#34e36a",
+                        "secondary-container": "#454954",
+                        "surface-container": "#1b1f2a",
+                        "secondary-fixed": "#dfe2f0",
+                        "on-secondary-container": "#b5b8c6",
+                        "surface-container-highest": "#313540",
+                        "on-tertiary-container": "#793820",
+                        "error-container": "#93000a",
+                        "surface-variant": "#313540",
+                        "on-secondary-fixed": "#171b25",
+                        "on-surface-variant": "#bbcbb8",
+                        "primary": "#4cf479",
+                        "on-secondary": "#2c303b",
+                        "on-primary-fixed": "#002108",
+                        "secondary-fixed-dim": "#c3c6d4",
+                        "surface-container-high": "#262a35"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "lg": "24px",
+                        "xl": "48px",
+                        "md": "16px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Geist Sans"],
+                        "mono-label": ["Geist Mono"],
+                        "h1": ["Geist Sans"],
+                        "label-md": ["Geist Sans"],
+                        "h3": ["Geist Sans"],
+                        "h2": ["Geist Sans"],
+                        "body-md": ["Geist Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "mono-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h3": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0F131D; color: #FFFFFF; font-family: 'Geist Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Derived from JSON intent, simplified for landing page) -->
+<header class="flex justify-between items-center h-16 px-gutter w-full bg-surface-container-low border-b border-surface-bright sticky top-0 z-50">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[24px]">graphic_eq</span>
+<span class="font-h2 text-h2 text-primary-container">Spotify Insights</span>
+</div>
+<nav class="hidden md:flex gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" href="#features">Features</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" href="#pricing">Pricing</a>
+</nav>
+<div>
+<button class="bg-primary-container text-surface-dim font-label-md text-label-md px-md py-sm rounded-none hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-background">
+                Log In
+            </button>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="py-xl md:py-[96px] px-gutter max-w-7xl mx-auto flex flex-col items-center text-center">
+<h1 class="font-h1 text-h1 md:text-[64px] md:leading-[72px] tracking-tight text-on-surface mb-lg max-w-4xl">
+                Understand Your Music Personality
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-2xl">
+                Deep-dive analytics for your listening habits. Uncover hidden trends, top artists, and the true sound of your life without the clutter.
+            </p>
+<div class="flex flex-col sm:flex-row gap-md">
+<button class="bg-primary-container text-surface-dim font-label-md text-label-md px-lg py-md rounded-none hover:bg-primary transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+                    Connect with Spotify
+                </button>
+<button class="bg-transparent text-on-surface border border-surface-bright font-label-md text-label-md px-lg py-md rounded-none hover:bg-surface-container-highest transition-colors">
+                    View Demo
+                </button>
+</div>
+<!-- Hero Image/Graphic Placeholder -->
+<div class="mt-[64px] w-full max-w-5xl border border-surface-bright bg-surface-container-low aspect-video relative overflow-hidden flex items-center justify-center">
+<img alt="Hero background" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-luminosity" data-alt="A stark, minimalist composition showing a vinyl record player in a dark room. The lighting is harsh and high-contrast, emphasizing sharp geometric lines and the texture of the equipment. The overall color palette is dominated by deep blacks, charcoal greys (#171c25), and intense, vibrant green accents (#1ed760) highlighting specific controls. The mood is technical, focused, and utilitarian, perfectly reflecting a brutalist SaaS design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_89NWzPhdXlZsXhRcRLfdb6e1cl3bUCZO58yZzixBk6g4HtvXBz76XbMBhCr1XEOZ6geS5dJLOduTDhLciAdUHSssdDmLlbQ2HUWfzN2zlafIWTRpKOnaN5x49ml3TgM8UIKvM8K1L4D-TtpAoSpXSPBil2_ZKvGe3IzsSRXqXE9DQLT-8yj7SQ2s7MJ4jybcZjLsXcIHmgDT2I0U5jmEViCVn1W5QtHxzRKW2nUF3GeaNKKta1sI0e4tg0xgLPxArl_u9Zvlmfz3"/>
+<div class="relative z-10 flex flex-col items-center gap-md">
+<span class="material-symbols-outlined text-[64px] text-surface-bright">bar_chart</span>
+<span class="font-mono-label text-mono-label text-surface-bright uppercase tracking-widest">Analytics Dashboard Preview</span>
+</div>
+</div>
+</section>
+<!-- Feature Grid (Bento style) -->
+<section class="py-xl px-gutter max-w-7xl mx-auto border-t border-surface-bright" id="features">
+<div class="mb-xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-sm">Raw Data. Refined.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Everything you need to analyze your auditory diet.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-low border border-surface-bright p-lg col-span-1 md:col-span-2 flex flex-col justify-between min-h-[300px]">
+<div>
+<span class="material-symbols-outlined text-primary-container mb-md text-[32px]">timeline</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Listening Trends Over Time</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Visualize how your tastes evolve across weeks, months, and years with precise graphing tools.</p>
+</div>
+<div class="mt-lg border-t border-surface-bright pt-sm flex gap-sm">
+<span class="px-sm py-xs bg-surface-container-low border border-surface-bright text-on-surface-variant font-mono-label text-mono-label">Line Charts</span>
+<span class="px-sm py-xs bg-surface-container-low border border-surface-bright text-on-surface-variant font-mono-label text-mono-label">Heatmaps</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low border border-surface-bright p-lg col-span-1 flex flex-col justify-between min-h-[300px]">
+<div>
+<span class="material-symbols-outlined text-on-surface mb-md text-[32px]">artist</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Top Artists</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Identify your core rotation with uncompromising accuracy.</p>
+</div>
+<div class="mt-lg">
+<div class="flex items-center justify-between border-b border-surface-bright py-sm">
+<span class="font-body-md text-body-md text-on-surface">1. Radiohead</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant">142 hrs</span>
+</div>
+<div class="flex items-center justify-between py-sm">
+<span class="font-body-md text-body-md text-on-surface">2. Kendrick Lamar</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant">98 hrs</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low border border-surface-bright p-lg col-span-1 flex flex-col justify-between min-h-[300px]">
+<div>
+<span class="material-symbols-outlined text-on-surface mb-md text-[32px]">album</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Genre Breakdown</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Micro-genres extracted directly from the Spotify API.</p>
+</div>
+<div class="mt-lg flex flex-wrap gap-xs">
+<span class="px-sm py-xs bg-surface-container-lowest border border-surface-bright text-on-surface-variant font-mono-label text-mono-label">Post-Punk</span>
+<span class="px-sm py-xs bg-surface-container-lowest border border-surface-bright text-on-surface-variant font-mono-label text-mono-label">IDM</span>
+<span class="px-sm py-xs bg-surface-container-lowest border border-surface-bright text-on-surface-variant font-mono-label text-mono-label">Shoegaze</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-low border border-surface-bright p-lg col-span-1 md:col-span-2 flex flex-col justify-between min-h-[300px] relative overflow-hidden group hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-on-surface mb-md text-[32px]">receipt_long</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Export to CSV</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Own your data. Export your entire listening history to standard formats for external analysis.</p>
+</div>
+<div class="mt-lg relative z-10">
+<button class="bg-transparent text-primary-container font-label-md text-label-md flex items-center gap-xs">
+                            Learn more <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-xl px-gutter max-w-5xl mx-auto border-t border-surface-bright mb-xl" id="pricing">
+<div class="text-center mb-xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-sm">Transparent Pricing</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">No hidden tiers. Just the tools you need.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Free Tier -->
+<div class="bg-surface-container-low border border-surface-bright p-lg flex flex-col">
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Basic</h3>
+<div class="font-h1 text-h1 text-on-surface mb-lg">$0 <span class="font-body-md text-body-md text-on-surface-variant font-normal">/mo</span></div>
+<ul class="flex-grow space-y-md mb-xl">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Last 4 weeks of data</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Top 50 Artists &amp; Tracks</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Standard Genre Breakdown</span>
+</li>
+</ul>
+<button class="w-full bg-transparent text-on-surface border border-surface-bright font-label-md text-label-md px-md py-sm rounded-none hover:bg-surface-container-highest transition-colors">
+                        Start Free
+                    </button>
+</div>
+<!-- Pro Tier -->
+<div class="bg-surface-container-highest border border-primary-container p-lg flex flex-col relative">
+<div class="absolute top-0 right-0 bg-primary-container text-surface-dim font-mono-label text-mono-label px-sm py-xs">RECOMMENDED</div>
+<h3 class="font-h3 text-h3 text-primary-container mb-xs">Pro</h3>
+<div class="font-h1 text-h1 text-on-surface mb-lg">$5 <span class="font-body-md text-body-md text-on-surface-variant font-normal">/mo</span></div>
+<ul class="flex-grow space-y-md mb-xl">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Unlimited historical data</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Top 500 Artists &amp; Tracks</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">CSV Data Exports</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Advanced Heatmaps</span>
+</li>
+</ul>
+<button class="w-full bg-primary-container text-surface-dim font-label-md text-label-md px-md py-sm rounded-none hover:bg-primary transition-colors">
+                        Upgrade to Pro
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-surface-bright py-lg px-gutter w-full">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">graphic_eq</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant">© 2024 Spotify Insights. Not affiliated with Spotify AB.</span>
+</div>
+<div class="flex gap-md">
+<a class="font-mono-label text-mono-label text-on-surface-variant hover:text-on-surface transition-colors" href="#">Privacy</a>
+<a class="font-mono-label text-mono-label text-on-surface-variant hover:text-on-surface transition-colors" href="#">Terms</a>
+<a class="font-mono-label text-mono-label text-on-surface-variant hover:text-on-surface transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

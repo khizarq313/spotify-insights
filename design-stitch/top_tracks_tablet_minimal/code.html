@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SonicTrack - Top Tracks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c3c6d4",
+                        "on-tertiary": "#571f08",
+                        "surface": "#0f131d",
+                        "secondary-fixed": "#dfe2f0",
+                        "background": "#0f131d",
+                        "surface-container-highest": "#313540",
+                        "tertiary": "#ffccbb",
+                        "on-primary": "#003913",
+                        "on-secondary": "#2c303b",
+                        "inverse-surface": "#dfe2f1",
+                        "on-primary-container": "#005721",
+                        "tertiary-fixed": "#ffdbcf",
+                        "outline": "#859583",
+                        "on-surface-variant": "#bbcbb8",
+                        "on-primary-fixed": "#002108",
+                        "on-tertiary-container": "#793820",
+                        "on-primary-fixed-variant": "#00531f",
+                        "surface-dim": "#0f131d",
+                        "surface-variant": "#313540",
+                        "on-error": "#690005",
+                        "surface-tint": "#34e36a",
+                        "on-secondary-container": "#b5b8c6",
+                        "surface-container-low": "#171b26",
+                        "primary-fixed-dim": "#34e36a",
+                        "primary": "#4cf479",
+                        "on-background": "#dfe2f1",
+                        "surface-bright": "#353944",
+                        "on-tertiary-fixed": "#380d00",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "surface-container": "#1b1f2a",
+                        "on-secondary-fixed-variant": "#434752",
+                        "outline-variant": "#3c4a3c",
+                        "on-secondary-fixed": "#171b25",
+                        "secondary-container": "#454954",
+                        "secondary": "#c3c6d4",
+                        "surface-container-lowest": "#0a0e18",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006e2c",
+                        "tertiary-container": "#ffa585",
+                        "on-tertiary-fixed-variant": "#73341c",
+                        "on-surface": "#dfe2f1",
+                        "inverse-on-surface": "#2c303b",
+                        "primary-container": "#1ed760",
+                        "surface-container-high": "#262a35",
+                        "primary-fixed": "#69ff89"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "margin": "24px",
+                        "xl": "48px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["Geist Mono"],
+                        "body-lg": ["Geist Sans"],
+                        "label-md": ["Geist Sans"],
+                        "h1": ["Geist Sans"],
+                        "h3": ["Geist Sans"],
+                        "h2": ["Geist Sans"],
+                        "body-md": ["Geist Sans"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h3": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- SideNavBar Component -->
+<nav class="fixed left-0 top-0 h-screen w-64 border-r border-surface-bright bg-background flex flex-col h-full py-lg z-20">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">graphic_eq</span>
+<div>
+<h2 class="font-h2 text-h2 text-primary-container tracking-tight">SonicTrack</h2>
+<p class="font-mono-label text-mono-label text-on-surface-variant">Pro Dashboard</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="flex flex-col gap-unit">
+<li>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+                        Dashboard
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md bg-surface-container-highest text-primary border-l-2 border-primary-container px-4 py-3 cursor-pointer font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insights</span>
+                        Analytics
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">person</span>
+                        Artists
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">payments</span>
+                        Revenue
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">description</span>
+                        Reports
+                    </a>
+</li>
+</ul>
+</div>
+<div class="mt-auto">
+<ul class="flex flex-col gap-unit">
+<li>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">help</span>
+                        Support
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                        Sign Out
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 ml-64 w-[calc(100%-16rem)] bg-surface-container-low border-b border-surface-bright flex justify-between items-center h-16 px-gutter z-10">
+<div class="flex items-center gap-md w-full max-w-md">
+<div class="flex items-center bg-background border border-surface-bright rounded-none px-md py-sm w-full focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm">search</span>
+<input class="bg-transparent border-none text-on-surface font-body-md text-body-md focus:ring-0 w-full p-0 placeholder-on-surface-variant" placeholder="Search tracks, artists, ISRC..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-unit text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors cursor-pointer rounded-none">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-unit text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors cursor-pointer rounded-none">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 bg-surface-bright border border-surface-bright ml-sm overflow-hidden rounded-none cursor-pointer">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A close-up profile portrait of a confident young professional woman. She is framed against a sleek, dark grey studio background that matches a dark mode UI aesthetic. Soft, high-contrast studio lighting highlights her features while keeping the overall mood technical and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgU1yuNEs_01jN1d34q4UukVq62B3Mm3Kqho50enuZ-d3w7CwV0yifq5TlP46zDDHp7nmISr60NcXVgqaMT13TeAGSvUIBShXNO59jzMr0UFo2osibQYkZUk6l78eUSlX2rg4OprWV3cPlKkfDefhHGQpCTRJtPWtriPX3uilmxqmudi7Zyx22CfD3DC1PQQ9Pnxaze6gx0xCbPqJlj3FwfhUpW4uemOuFdotuIDMBXfepL9i8oxI4rpqNd_2D2oWbxe61h7fOp0v0"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-16 min-h-screen bg-background">
+<div class="p-xl max-w-7xl mx-auto">
+<!-- Page Header & Controls -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-margin">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface mb-sm">Top Performing Tracks</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Global streams and velocity metrics.</p>
+</div>
+<!-- Simple Tab Bar for Time Ranges -->
+<div class="flex bg-surface-container-low border border-surface-bright p-unit w-max">
+<button class="px-md py-sm font-label-md text-label-md bg-surface-container-highest text-primary border border-surface-bright cursor-pointer">7 Days</button>
+<button class="px-md py-sm font-label-md text-label-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors border border-transparent">30 Days</button>
+<button class="px-md py-sm font-label-md text-label-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors border border-transparent">YTD</button>
+</div>
+</div>
+<!-- List/Table Container -->
+<div class="bg-surface-container-low border border-surface-bright rounded-none overflow-hidden">
+<!-- Table Header -->
+<div class="grid grid-cols-[48px_minmax(250px,2fr)_minmax(150px,1fr)_120px_120px] items-center px-lg py-md border-b border-surface-bright bg-surface">
+<div class="font-mono-label text-mono-label text-on-surface-variant text-center">#</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Track Details</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Artist</div>
+<div class="font-label-md text-label-md text-on-surface-variant text-right">Streams</div>
+<div class="font-label-md text-label-md text-on-surface-variant text-right">Trend</div>
+</div>
+<!-- Table Rows -->
+<div class="flex flex-col">
+<!-- Row 1: Active/Highlight State -->
+<div class="grid grid-cols-[48px_minmax(250px,2fr)_minmax(150px,1fr)_120px_120px] items-center px-lg py-sm border-b border-surface-bright bg-surface-container-high border-l-2 border-l-primary-container hover:bg-surface-container-highest transition-colors group cursor-pointer">
+<div class="font-mono-label text-mono-label text-on-surface text-center">01</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-surface-bright border border-surface-bright shrink-0 overflow-hidden">
+<img alt="Album Art" class="w-full h-full object-cover" data-alt="Abstract digital album cover art. A vibrant, glowing neon green geometric grid distorting over a pitch-black background. The style is heavily inspired by synthwave and digital brutalism, matching a high-contrast dark theme UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnvVGn7M2nicm0KxAtz7ECJNoxZohFwu8FShFrMbN41UelgKD5ir6HQWhFISo2HknCH0NjtxQC1jbA4E-1ALQe2n-9r0TvUXRAAaTTF33AeuklxLX6uUYLldQNmA6qlNQaHQCyTFUiWPIMySY2z-Tindn_-li7zfD4VAsjRf-grQNfDZCxKciyYG43te4HolPFh-nwxAJeZjh9orRC-yf7GSpaczNyn93TJ5SOQmFgY_AHGgveItRJE66eaVRwy-2Y3NpfUx33uVxI"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-h3 text-h3 text-on-surface truncate">Neon Paradox</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant truncate">ISRC: US-S1Z-22-00104</span>
+</div>
+</div>
+<div class="font-body-md text-body-md text-on-surface truncate pr-md">DataGhost</div>
+<div class="font-mono-label text-mono-label text-on-surface text-right">2,401,982</div>
+<div class="flex items-center justify-end gap-xs text-primary font-mono-label text-mono-label">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                            +24.5%
+                        </div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-[48px_minmax(250px,2fr)_minmax(150px,1fr)_120px_120px] items-center px-lg py-sm border-b border-surface-bright bg-transparent border-l-2 border-l-transparent hover:bg-surface-container-high transition-colors group cursor-pointer">
+<div class="font-mono-label text-mono-label text-on-surface-variant text-center group-hover:text-on-surface">02</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-surface-bright border border-surface-bright shrink-0 overflow-hidden">
+<img alt="Album Art" class="w-full h-full object-cover grayscale opacity-80" data-alt="A minimalist album cover design featuring a simple, stark white wireframe cube suspended in an endless dark gray void. The aesthetic is extremely flat, technical, and utilizes a monochromatic palette with zero gradients or depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6FfXtEVZQHkBGrkcZit4-yjIX9IvVJjxVvb-79lqzeEHMxuN-pHULzuWBPOrqBqcb3u0v0lFHidDN4lmyEv5YQmheqp0to6AhhbuYlECcyJEiCcok18SeYz9xxe1c1VOfbsYxtKx4EjY_dcy-RpAARxTRYzT7jAlg37AVXnDRVd510DF6i_D2kN_QbeJgUjyG0TPi7PndKMzY-5y7F8bgDy83-QeW9WqCTTCvnEFbj4e7Wrnsly6oJAYdpSWogLY404Obmu0TgnVY"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-h3 text-h3 text-on-surface truncate">System Void</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant truncate">ISRC: GB-L9D-23-44112</span>
+</div>
+</div>
+<div class="font-body-md text-body-md text-on-surface truncate pr-md">The Architect</div>
+<div class="font-mono-label text-mono-label text-on-surface text-right">1,845,200</div>
+<div class="flex items-center justify-end gap-xs text-primary font-mono-label text-mono-label">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                            +12.8%
+                        </div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-[48px_minmax(250px,2fr)_minmax(150px,1fr)_120px_120px] items-center px-lg py-sm border-b border-surface-bright bg-transparent border-l-2 border-l-transparent hover:bg-surface-container-high transition-colors group cursor-pointer">
+<div class="font-mono-label text-mono-label text-on-surface-variant text-center group-hover:text-on-surface">03</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-surface-bright border border-surface-bright shrink-0 overflow-hidden">
+<div class="w-full h-full bg-surface-bright flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">music_note</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-h3 text-h3 text-on-surface truncate">Baseline Protocol</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant truncate">ISRC: DE-A33-21-99800</span>
+</div>
+</div>
+<div class="font-body-md text-body-md text-on-surface truncate pr-md">Null Set</div>
+<div class="font-mono-label text-mono-label text-on-surface text-right">980,450</div>
+<div class="flex items-center justify-end gap-xs text-error font-mono-label text-mono-label">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+                            -3.2%
+                        </div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-[48px_minmax(250px,2fr)_minmax(150px,1fr)_120px_120px] items-center px-lg py-sm border-b border-surface-bright bg-transparent border-l-2 border-l-transparent hover:bg-surface-container-high transition-colors group cursor-pointer">
+<div class="font-mono-label text-mono-label text-on-surface-variant text-center group-hover:text-on-surface">04</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-surface-bright border border-surface-bright shrink-0 overflow-hidden">
+<img alt="Album Art" class="w-full h-full object-cover grayscale opacity-70" data-alt="A dark, moody abstract texture representing an album cover. It looks like coarse, dark gray concrete or asphalt heavily shadowed in low key lighting, embodying a raw, industrial, and minimalist visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb2wsE2vYxU4RmDagJ8FiFp8rHq2UCkyuI3OyVl-uZSStv5bQNwWyW9_TyGdr_KEDMKHjRHbzIkbLjpEE-2znWqs9jwsHNqjbWk3qNrC7surzfxjZC1Z78EItk4sUdXvQ8LZSpm50ZLbRnTuWf22L5d7p0YiLHIhvEJvISH6BvYUxzd38bwXsFOUoGwDbNGEdoSXaRug1XQSyxIJ49jKwEzhcR72pe7BZTdOtfCfSOC8Kd33MLajs6CdmtPlSS0Vh5m6C3Eo1czmFt"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-h3 text-h3 text-on-surface truncate">Static Waves</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant truncate">ISRC: FR-66X-24-00011</span>
+</div>
+</div>
+<div class="font-body-md text-body-md text-on-surface truncate pr-md">Echo Chamber</div>
+<div class="font-mono-label text-mono-label text-on-surface text-right">754,110</div>
+<div class="flex items-center justify-end gap-xs text-on-surface-variant font-mono-label text-mono-label">
+<span class="material-symbols-outlined text-[16px]">trending_flat</span>
+                            0.0%
+                        </div>
+</div>
+<!-- Row 5 -->
+<div class="grid grid-cols-[48px_minmax(250px,2fr)_minmax(150px,1fr)_120px_120px] items-center px-lg py-sm bg-transparent border-l-2 border-l-transparent hover:bg-surface-container-high transition-colors group cursor-pointer">
+<div class="font-mono-label text-mono-label text-on-surface-variant text-center group-hover:text-on-surface">05</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-surface-bright border border-surface-bright shrink-0 overflow-hidden">
+<div class="w-full h-full bg-surface-bright flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">music_note</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-h3 text-h3 text-on-surface truncate">Compile Error</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant truncate">ISRC: US-Z1A-20-55443</span>
+</div>
+</div>
+<div class="font-body-md text-body-md text-on-surface truncate pr-md">Syntax</div>
+<div class="font-mono-label text-mono-label text-on-surface text-right">620,098</div>
+<div class="flex items-center justify-end gap-xs text-primary font-mono-label text-mono-label">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                            +5.1%
+                        </div>
+</div>
+</div>
+</div>
+<!-- Pagination/Footer Actions -->
+<div class="mt-lg flex justify-between items-center">
+<span class="font-mono-label text-mono-label text-on-surface-variant">Showing 1-5 of 142 tracks</span>
+<div class="flex gap-sm">
+<button class="px-md py-sm border border-surface-bright text-on-surface-variant font-label-md bg-transparent hover:border-surface-bright hover:text-on-surface transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled="">Previous</button>
+<button class="px-md py-sm border border-surface-bright text-on-surface font-label-md bg-transparent hover:bg-surface-container-low transition-colors">Next</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

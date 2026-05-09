@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spotify Insights - Understand Your Music Personality</title>
+<!-- Google Fonts: Geist & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#d0bcff",
+                        "tertiary-fixed": "#acedff",
+                        "surface-dim": "#0f131d",
+                        "surface-container": "#1b2029",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "background": "#0f131d",
+                        "primary": "#4cf479",
+                        "on-surface-variant": "#bbcbb8",
+                        "on-primary": "#003913",
+                        "surface-bright": "#353944",
+                        "inverse-surface": "#dfe2f0",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#262a34",
+                        "on-secondary-container": "#c4abff",
+                        "on-tertiary-container": "#005261",
+                        "surface-container-low": "#171c25",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#00531f",
+                        "primary-fixed-dim": "#34e36a",
+                        "on-surface": "#dfe2f0",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "surface-variant": "#31353f",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-tertiary-fixed": "#001f26",
+                        "on-background": "#dfe2f0",
+                        "outline-variant": "#3c4a3c",
+                        "surface-tint": "#34e36a",
+                        "on-secondary-fixed": "#23005c",
+                        "tertiary-container": "#3bcbea",
+                        "inverse-primary": "#006e2c",
+                        "surface": "#0f131d",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0a0e17",
+                        "secondary-container": "#571bc1",
+                        "surface-container-highest": "#31353f",
+                        "on-tertiary": "#003640",
+                        "secondary-fixed": "#e9ddff",
+                        "on-secondary": "#3c0091",
+                        "outline": "#859583",
+                        "primary-fixed": "#69ff89",
+                        "on-primary-container": "#005721",
+                        "primary-container": "#1ed760",
+                        "inverse-on-surface": "#2c303b",
+                        "on-primary-fixed": "#002108",
+                        "tertiary": "#7ee5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "component-padding-x": "20px",
+                        "component-padding-y": "12px",
+                        "section-gap": "64px",
+                        "unit": "4px",
+                        "container-margin": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Geist"],
+                        "label-caps": ["Geist"],
+                        "stat-lg": ["JetBrains Mono"],
+                        "headline-lg": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "stat-sm": ["JetBrains Mono"],
+                        "headline-xl": ["Geist"],
+                        "body-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "stat-lg": ["24px", { "lineHeight": "1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "stat-sm": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-xl": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle global noise texture */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        .ambient-glow {
+            box-shadow: 0 0 40px rgba(30, 215, 96, 0.15);
+        }
+        .glass-panel {
+            background: rgba(22, 31, 51, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Minimal Landing Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 px-container-margin py-6 flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined fill text-primary-container text-[28px]">graphic_eq</span>
+<span class="font-headline-lg text-[24px] font-bold text-on-surface tracking-tight">Insights</span>
+</div>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors uppercase tracking-widest" href="#login">
+            Log In
+        </a>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center px-container-margin pt-32 pb-section-gap overflow-hidden">
+<!-- Background Glows -->
+<div class="absolute top-1/4 -left-64 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-0 right-0 w-[800px] h-[800px] bg-secondary-container/10 rounded-full blur-[150px] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-gutter relative z-10 w-full items-center">
+<!-- Hero Typography -->
+<div class="flex flex-col gap-8 max-w-2xl">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 w-max">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase">v2.0 Analytics Engine Live</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface leading-[1.05]">
+                    Understand Your <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-tertiary-container">Music Personality</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Deep dive into your Spotify stats with production-grade analytics. Discover hidden patterns, track your listening journey in real-time, and visualize your sonic identity.
+                </p>
+<div class="pt-4">
+<a class="inline-flex items-center justify-center gap-3 bg-primary-container text-on-primary-container font-label-caps text-label-caps px-8 py-4 rounded-full hover:shadow-[0_0_30px_rgba(30,215,96,0.4)] transition-all uppercase hover:-translate-y-0.5 duration-300" href="#connect">
+<span class="material-symbols-outlined">queue_music</span>
+                        Connect with Spotify
+                    </a>
+</div>
+</div>
+<!-- Floating Chart Visuals (Abstract Mockup) -->
+<div class="relative h-[600px] hidden lg:block perspective-1000">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-container/50 to-transparent rounded-3xl border border-outline-variant/20 backdrop-blur-2xl transform rotate-y-[-10deg] rotate-x-[5deg] shadow-2xl p-6 flex flex-col gap-4 ambient-glow transition-transform duration-700 hover:rotate-y-0 hover:rotate-x-0">
+<!-- Mockup Header -->
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-4">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-bright/50"></div>
+<div class="flex flex-col gap-1 justify-center">
+<div class="h-2 w-24 bg-on-surface-variant/50 rounded"></div>
+<div class="h-1.5 w-16 bg-on-surface-variant/30 rounded"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">more_horiz</span>
+</div>
+<!-- Mockup Content Bento Grid -->
+<div class="grid grid-cols-2 gap-4 h-full">
+<!-- Chart Card -->
+<div class="col-span-2 glass-panel rounded-xl p-4 flex flex-col justify-end relative overflow-hidden group">
+<div class="absolute top-4 left-4 font-label-caps text-label-caps text-on-surface-variant">Listening Heatmap</div>
+<div class="h-32 w-full flex items-end gap-1 opacity-70">
+<!-- Fake Bars -->
+<div class="w-full bg-gradient-to-t from-primary/80 to-transparent rounded-t" style="height: 40%"></div>
+<div class="w-full bg-gradient-to-t from-primary/80 to-transparent rounded-t" style="height: 70%"></div>
+<div class="w-full bg-gradient-to-t from-primary-container to-transparent rounded-t relative" style="height: 100%">
+<div class="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rounded-full shadow-[0_0_10px_#fff]"></div>
+</div>
+<div class="w-full bg-gradient-to-t from-primary/80 to-transparent rounded-t" style="height: 50%"></div>
+<div class="w-full bg-gradient-to-t from-primary/80 to-transparent rounded-t" style="height: 80%"></div>
+<div class="w-full bg-gradient-to-t from-primary/80 to-transparent rounded-t" style="height: 30%"></div>
+</div>
+</div>
+<!-- Stat Card 1 -->
+<div class="glass-panel rounded-xl p-4 flex flex-col gap-2">
+<span class="material-symbols-outlined text-tertiary-container">face</span>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Top Mood</div>
+<div class="font-stat-lg text-stat-lg text-on-surface">Euphoric</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="glass-panel rounded-xl p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-secondary-container/20 rounded-full blur-xl"></div>
+<span class="material-symbols-outlined text-secondary-container">category</span>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Top Genre</div>
+<div class="font-stat-lg text-stat-lg text-on-surface">Synthwave</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Grid Section -->
+<section class="py-section-gap px-container-margin relative z-10 bg-surface/30 border-y border-outline-variant/10">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-4">Precision Analytics</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Beyond simple play counts. We analyze audio features, listening times, and historical data to build a complete profile of your sonic world.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Feature 1 -->
+<div class="bg-surface-container-low/50 backdrop-blur-md border border-outline-variant/20 rounded-[24px] p-8 hover:bg-surface-container/80 hover:border-outline-variant/40 transition-all duration-300 group">
+<div class="w-14 h-14 rounded-2xl bg-surface-variant flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary-container text-[28px]">trending_up</span>
+</div>
+<h3 class="font-headline-lg text-[24px] text-on-surface mb-3">Real-time Tracking</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Monitor your listening habits as they happen. Watch your stats evolve live with zero delay.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-low/50 backdrop-blur-md border border-outline-variant/20 rounded-[24px] p-8 hover:bg-surface-container/80 hover:border-outline-variant/40 transition-all duration-300 group">
+<div class="w-14 h-14 rounded-2xl bg-surface-variant flex items-center justify-center mb-6 group-hover:bg-tertiary-container/20 transition-colors">
+<span class="material-symbols-outlined text-tertiary-container text-[28px]">face</span>
+</div>
+<h3 class="font-headline-lg text-[24px] text-on-surface mb-3">Mood Analysis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We analyze the valence, energy, and danceability of your tracks to graph your emotional journey.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-low/50 backdrop-blur-md border border-outline-variant/20 rounded-[24px] p-8 hover:bg-surface-container/80 hover:border-outline-variant/40 transition-all duration-300 group">
+<div class="w-14 h-14 rounded-2xl bg-surface-variant flex items-center justify-center mb-6 group-hover:bg-secondary-container/20 transition-colors">
+<span class="material-symbols-outlined text-secondary-container text-[28px]">map</span>
+</div>
+<h3 class="font-headline-lg text-[24px] text-on-surface mb-3">Listening Heatmaps</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Discover exactly when you listen the most. Visual grids map your activity across days and hours.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-section-gap px-container-margin">
+<div class="max-w-5xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-4">Choose Your Tier</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Unlock the full potential of your music data.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<!-- Free Tier -->
+<div class="glass-panel p-8 rounded-[32px] border-outline-variant/20 h-full flex flex-col justify-between">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Basic</div>
+<div class="font-headline-xl text-headline-xl text-on-surface mb-6">Free</div>
+<ul class="flex flex-col gap-4 font-body-md text-body-md text-on-surface-variant mb-8">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] opacity-50">check</span> Basic Top Tracks &amp; Artists</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] opacity-50">check</span> Last 4 Weeks Data</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] opacity-50">check</span> Standard Profile Share</li>
+</ul>
+</div>
+<button class="w-full py-3 rounded-full border border-outline-variant/50 text-on-surface font-label-caps text-label-caps uppercase hover:bg-surface-variant/30 transition-colors">
+                        Start Free
+                    </button>
+</div>
+<!-- Pro Tier (Featured) -->
+<div class="bg-surface-container border border-primary/30 rounded-[32px] p-8 h-[105%] flex flex-col justify-between shadow-[0_0_50px_rgba(30,215,96,0.08)] relative overflow-hidden">
+<!-- Glow effect inside card -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-center mb-2">
+<div class="font-label-caps text-label-caps text-primary uppercase">Pro Analytics</div>
+<span class="bg-primary/20 text-primary-container px-3 py-1 rounded-full font-label-caps text-[10px] uppercase">Most Popular</span>
+</div>
+<div class="font-headline-xl text-headline-xl text-on-surface mb-6">$4.99<span class="text-stat-lg text-on-surface-variant">/mo</span></div>
+<ul class="flex flex-col gap-4 font-body-md text-body-md text-on-surface mb-8">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check_circle</span> Unlimited Historical Data</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check_circle</span> Advanced Mood &amp; Audio Features</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check_circle</span> Interactive Heatmaps</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check_circle</span> Data Export (CSV)</li>
+</ul>
+</div>
+<button class="relative z-10 w-full py-4 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase hover:shadow-[0_0_20px_rgba(30,215,96,0.3)] transition-all">
+                        Upgrade to Pro
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="border-t border-outline-variant/10 bg-surface-container-lowest pt-16 pb-8 px-container-margin mt-24">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2 opacity-50">
+<span class="material-symbols-outlined fill text-[24px]">graphic_eq</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase">Spotify Insights</span>
+</div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">mail</span>
+</a>
+</div>
+<div class="font-body-md text-[14px] text-on-surface-variant/50">
+                © 2024 Insights App. Not affiliated with Spotify AB.
+            </div>
+</div>
+</footer>
+</body></html>

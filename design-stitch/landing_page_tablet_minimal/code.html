@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SonicTrack - Minimal Landing Page</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Geist -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c3c6d4",
+                        "on-tertiary": "#571f08",
+                        "surface": "#0f131d",
+                        "secondary-fixed": "#dfe2f0",
+                        "background": "#0f131d",
+                        "surface-container-highest": "#313540",
+                        "tertiary": "#ffccbb",
+                        "on-primary": "#003913",
+                        "on-secondary": "#2c303b",
+                        "inverse-surface": "#dfe2f1",
+                        "on-primary-container": "#005721",
+                        "tertiary-fixed": "#ffdbcf",
+                        "outline": "#859583",
+                        "on-surface-variant": "#bbcbb8",
+                        "on-primary-fixed": "#002108",
+                        "on-tertiary-container": "#793820",
+                        "on-primary-fixed-variant": "#00531f",
+                        "surface-dim": "#0f131d",
+                        "surface-variant": "#313540",
+                        "on-error": "#690005",
+                        "surface-tint": "#34e36a",
+                        "on-secondary-container": "#b5b8c6",
+                        "surface-container-low": "#171b26",
+                        "primary-fixed-dim": "#34e36a",
+                        "primary": "#4cf479",
+                        "on-background": "#dfe2f1",
+                        "surface-bright": "#353944",
+                        "on-tertiary-fixed": "#380d00",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "surface-container": "#1b1f2a",
+                        "on-secondary-fixed-variant": "#434752",
+                        "outline-variant": "#3c4a3c",
+                        "on-secondary-fixed": "#171b25",
+                        "secondary-container": "#454954",
+                        "secondary": "#c3c6d4",
+                        "surface-container-lowest": "#0a0e18",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006e2c",
+                        "tertiary-container": "#ffa585",
+                        "on-tertiary-fixed-variant": "#73341c",
+                        "on-surface": "#dfe2f1",
+                        "inverse-on-surface": "#2c303b",
+                        "primary-container": "#1ed760",
+                        "surface-container-high": "#262a35",
+                        "primary-fixed": "#69ff89"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "margin": "24px",
+                        "xl": "48px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["Geist Mono"],
+                        "body-lg": ["Geist Sans"],
+                        "label-md": ["Geist Sans"],
+                        "h1": ["Geist Sans"],
+                        "h3": ["Geist Sans"],
+                        "h2": ["Geist Sans"],
+                        "body-md": ["Geist Sans"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h3": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Adapted for Landing Page Context) -->
+<header class="bg-surface-container-low dark:bg-surface-container-low border-b border-surface-bright w-full z-50">
+<div class="flex justify-between items-center h-16 px-lg w-full max-w-7xl mx-auto">
+<div class="font-h2 text-h2 text-primary-container dark:text-primary-container tracking-tight">SonicTrack</div>
+<div class="flex gap-md items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors hidden md:block" href="#">Documentation</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors hidden md:block" href="#">API Reference</a>
+<button class="bg-primary-container text-surface px-md py-2 rounded-none font-label-md text-label-md transition-colors hover:bg-primary ml-sm">Sign In</button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col">
+<!-- Hero Section: Flat, High-Contrast -->
+<section class="border-b border-surface-bright px-lg py-xl md:py-24 w-full bg-background relative overflow-hidden">
+<!-- Subtle grid pattern overlay for brutalist texture -->
+<div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(theme('colors.surface-bright') 1px, transparent 1px); background-size: 24px 24px; opacity: 0.2;"></div>
+<div class="max-w-4xl mx-auto relative z-10 flex flex-col md:flex-row gap-xl items-center">
+<div class="flex-1 space-y-lg text-left">
+<div class="inline-flex items-center gap-2 border border-surface-bright bg-surface-container-low px-3 py-1 text-on-surface-variant font-mono-label text-mono-label">
+<span class="w-2 h-2 bg-primary-container rounded-none"></span>
+                        v2.4 Core Engine Released
+                    </div>
+<h1 class="font-h1 text-h1 text-on-surface leading-tight">
+                        Audio Processing Infrastructure for Developers.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        A low-latency, high-throughput API for routing, analyzing, and transmuting audio streams in real-time. Built for scale, deployed in seconds.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-md pt-sm">
+<button class="bg-primary-container text-surface px-lg py-3 rounded-none font-label-md text-label-md transition-colors hover:bg-primary flex justify-center items-center gap-2">
+                            Deploy Now
+                            <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+</button>
+<button class="bg-transparent text-on-surface border border-surface-bright px-lg py-3 rounded-none font-label-md text-label-md transition-colors hover:bg-surface-container-highest flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+                            Read the Docs
+                        </button>
+</div>
+</div>
+<!-- Abstract Hero Graphic (Flat Brutalist Style) -->
+<div class="hidden md:flex flex-1 justify-end">
+<div class="w-full max-w-[320px] aspect-square border border-surface-bright bg-surface-container-low p-4 relative flex flex-col justify-between">
+<div class="border-b border-surface-bright pb-2 flex justify-between items-center">
+<span class="font-mono-label text-mono-label text-on-surface-variant">terminal@sonic:~$</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">close</span>
+</div>
+<div class="flex-grow py-4 space-y-2 font-mono-label text-mono-label">
+<p class="text-primary-container">&gt; initializing sonictrack daemon...</p>
+<p class="text-on-surface-variant">&gt; binding to port 8080</p>
+<p class="text-on-surface-variant">&gt; loading neural DSP models [OK]</p>
+<p class="text-primary">&gt; stream ready.</p>
+</div>
+<div class="h-8 bg-surface-bright w-full flex items-center px-2">
+<div class="w-full h-1 bg-primary-container" style="width: 75%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section: 2-Column Grid -->
+<section class="border-b border-surface-bright px-lg py-xl w-full bg-background">
+<div class="max-w-5xl mx-auto">
+<div class="mb-xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-sm">Engineered for Reliability</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Skip the boilerplate. Our infrastructure handles the complexities of real-time audio routing so you can focus on building features.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-surface-bright border border-surface-bright">
+<!-- Feature 1 -->
+<div class="bg-surface-container-low p-lg hover:bg-surface-container-highest transition-colors flex flex-col">
+<span class="material-symbols-outlined text-primary-container text-[32px] mb-md" style="font-variation-settings: 'FILL' 1;">speed</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Sub-millisecond Latency</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Optimized C++ core ensures audio passes through our routing nodes with minimal jitter and absolute temporal precision.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-low p-lg hover:bg-surface-container-highest transition-colors flex flex-col">
+<span class="material-symbols-outlined text-primary-container text-[32px] mb-md" style="font-variation-settings: 'FILL' 1;">multiline_chart</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Real-time Analytics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Extract spectral data, RMS levels, and pitch detection events continuously via WebSockets with zero overhead.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-low p-lg hover:bg-surface-container-highest transition-colors flex flex-col">
+<span class="material-symbols-outlined text-primary-container text-[32px] mb-md" style="font-variation-settings: 'FILL' 1;">security</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Encrypted Streams</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">End-to-end DTLS/SRTP encryption guarantees payload security across all active concurrent processing channels.</p>
+</div>
+<!-- Feature 4 -->
+<div class="bg-surface-container-low p-lg hover:bg-surface-container-highest transition-colors flex flex-col">
+<span class="material-symbols-outlined text-primary-container text-[32px] mb-md" style="font-variation-settings: 'FILL' 1;">api</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">GraphQL API</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Mutate routing logic on the fly and query system states using our strictly typed, declarative API schema.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section: 2-Column Cards -->
+<section class="px-lg py-xl w-full bg-background">
+<div class="max-w-4xl mx-auto">
+<div class="mb-xl text-center">
+<h2 class="font-h2 text-h2 text-on-surface mb-sm">Transparent Utility Pricing</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Pay only for the compute and bandwidth you consume. No hidden enterprise tiers.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg items-start">
+<!-- Base Tier -->
+<div class="border border-surface-bright bg-surface-container-low p-lg flex flex-col h-full">
+<div class="mb-lg">
+<h3 class="font-h3 text-h3 text-on-surface">Developer</h3>
+<div class="mt-sm mb-xs flex items-baseline gap-1">
+<span class="font-h1 text-h1 text-on-surface">$0</span>
+<span class="font-body-md text-body-md text-on-surface-variant">/ month</span>
+</div>
+<p class="font-mono-label text-mono-label text-on-surface-variant">Free up to 10k compute hours</p>
+</div>
+<button class="w-full bg-transparent text-on-surface border border-surface-bright px-md py-2 rounded-none font-label-md text-label-md transition-colors hover:bg-surface-container-highest mb-lg">Start Free</button>
+<div class="border-t border-surface-bright pt-lg flex-grow">
+<ul class="space-y-sm flex flex-col">
+<li class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">10 Concurrent Streams</span>
+</li>
+<li class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Standard Latency Route</span>
+</li>
+<li class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Community Support</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Pro Tier (Highlighted) -->
+<div class="border border-primary-container bg-surface-container-low p-lg flex flex-col h-full relative">
+<!-- Highlight Badge -->
+<div class="absolute -top-[1px] right-lg bg-primary-container text-surface px-2 py-1 font-mono-label text-mono-label">Production</div>
+<div class="mb-lg">
+<h3 class="font-h3 text-h3 text-on-surface">Scale</h3>
+<div class="mt-sm mb-xs flex items-baseline gap-1">
+<span class="font-h1 text-h1 text-on-surface">$0.005</span>
+<span class="font-body-md text-body-md text-on-surface-variant">/ compute hour</span>
+</div>
+<p class="font-mono-label text-mono-label text-on-surface-variant">Billed linearly per usage</p>
+</div>
+<button class="w-full bg-primary-container text-surface border border-primary-container px-md py-2 rounded-none font-label-md text-label-md transition-colors hover:bg-primary mb-lg">Generate API Key</button>
+<div class="border-t border-surface-bright pt-lg flex-grow">
+<ul class="space-y-sm flex flex-col">
+<li class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Unlimited Streams</span>
+</li>
+<li class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Ultra-Low Latency Edge Routing</span>
+</li>
+<li class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Advanced DSP Tooling</span>
+</li>
+<li class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+<span class="font-body-md text-body-md text-on-surface">Priority SLA Support</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Simple Footer -->
+<footer class="border-t border-surface-bright bg-surface-container-lowest py-lg px-lg w-full">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="font-mono-label text-mono-label text-on-surface-variant">
+                © 2024 SonicTrack Inc.
+            </div>
+<div class="flex gap-lg">
+<a class="font-mono-label text-mono-label text-on-surface-variant hover:text-on-surface transition-colors" href="#">Terms</a>
+<a class="font-mono-label text-mono-label text-on-surface-variant hover:text-on-surface transition-colors" href="#">Privacy</a>
+<a class="font-mono-label text-mono-label text-on-surface-variant hover:text-on-surface transition-colors" href="#">Status</a>
+</div>
+</div>
+</footer>
+</body></html>
