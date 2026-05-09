@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 import { createAdminClient } from "@/lib/supabase/admin"
-import { stripe } from "@/lib/stripe"
 
 export async function POST() {
   try {
@@ -20,28 +19,7 @@ export async function POST() {
     const userId = user.id
     console.log(`[Delete Account] Starting deletion for user: ${userId}`)
 
-    // 2. Get user's subscription to find Stripe customer ID
-    const { data: subscription } = await supabase
-      .from("subscriptions")
-      .select("stripe_customer_id")
-      .eq("user_id", userId)
-      .single()
-
-    // 3. Delete Stripe customer if exists (automatically cancels all subscriptions)
-    if (subscription?.stripe_customer_id) {
-      try {
-        console.log(`[Delete Account] Deleting Stripe customer: ${subscription.stripe_customer_id}`)
-        await stripe.customers.del(subscription.stripe_customer_id)
-        console.log(`[Delete Account] ✅ Stripe customer deleted`)
-      } catch (stripeError) {
-        // Log but don't fail - user deletion should proceed even if Stripe fails
-        console.error("[Delete Account] ⚠️ Stripe deletion failed (continuing anyway):", stripeError)
-      }
-    } else {
-      console.log("[Delete Account] No Stripe customer found, skipping")
-    }
-
-    // 4. Delete Supabase auth user (triggers CASCADE DELETE on all related tables)
+    // 2. Delete Supabase auth user (triggers CASCADE DELETE on all related tables)
     // This requires admin privileges (service role key)
     const adminClient = createAdminClient()
 
@@ -65,7 +43,7 @@ export async function POST() {
       )
     }
 
-    // 5. Sign out the user (clear cookies)
+    // 3. Sign out the user (clear cookies)
     await supabase.auth.signOut()
 
     return NextResponse.json({
