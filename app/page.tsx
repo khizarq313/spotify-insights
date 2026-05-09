@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import Link from "next/link"
+import { redirect } from "next/navigation"
 import { Music2, BarChart3, Heart, Share2, Clock, Star, ArrowRight, ChevronRight } from "lucide-react"
 
 const FEATURES = [
@@ -42,7 +43,19 @@ const STATS = [
   { value: "PNG", label: "Export format"   },
 ]
 
-export default function HomePage() {
+export default function HomePage({
+  searchParams,
+}: {
+  searchParams?: { error?: string; error_description?: string; error_code?: string }
+}) {
+  // Supabase sends OAuth errors to site_url (/) with ?error= params — forward them to the login page
+  const errDesc = searchParams?.error_description
+  const errCode = searchParams?.error
+  if (errDesc || errCode) {
+    const msg = errDesc ?? errCode ?? "Authentication error"
+    redirect(`/auth/login?error=${encodeURIComponent(msg)}`)
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
