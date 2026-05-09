@@ -17,7 +17,7 @@ import { NextResponse, type NextRequest } from "next/server"
 /** Routes that require an authenticated Spotify session. */
 const PROTECTED_PATHS = ["/dashboard", "/heatmap", "/mood", "/card", "/profile"]
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // We need to thread cookie mutations through the response, so track it here.
   let supabaseResponse = NextResponse.next({ request })
 
