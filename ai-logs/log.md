@@ -167,37 +167,37 @@ All 7 files modified/created with 0 TypeScript errors.
 
 ---
 
-## Prompt 5 (Phase 4 — Design Overhaul + Advanced Analytics)
+## Prompt 5 (Phase 4 ï¿½ Design Overhaul + Advanced Analytics)
 
 Follow the attached stitch design files. Use solid colors, no gradients, no gradient box-shadows. Every page and element must be responsive. Complete the remaining Phase 4 stats components (rebuild top-tracks, top-artists, genre-cloud), add error boundaries, build the listening heatmap page, and build the mood analysis page.
 
 ## Response
 
-**Phase 4 — Complete. All files produced with 0 TypeScript errors.**
+**Phase 4 ï¿½ Complete. All files produced with 0 TypeScript errors.**
 
 **Design system applied:**
-- `app/globals.css` — rewritten with flat hex tokens (`--background: #0a0e17`, `--card: #171c25`, `--primary: #1ed760`, etc.). Custom scrollbar, ::selection, heatmap scale CSS vars.
-- `app/layout.tsx` — JetBrains Mono added, Footer removed, Toaster styled with solid border.
-- `components/navigation.tsx` — minimal fixed top bar for public pages.
-- `app/page.tsx` — hero + stats bar + 6-feature grid + CTA + footer. No gradients, all solid borders.
-- `app/auth/login/page.tsx` — flat centered card, rounded-full CTA.
-- `components/side-nav.tsx` — `SideNav` + `DashboardLayout`. lg: fixed 224px left sidebar; mobile: hamburger + slide-in drawer. Active state: border-r-2 primary.
+- `app/globals.css` ï¿½ rewritten with flat hex tokens (`--background: #0a0e17`, `--card: #171c25`, `--primary: #1ed760`, etc.). Custom scrollbar, ::selection, heatmap scale CSS vars.
+- `app/layout.tsx` ï¿½ JetBrains Mono added, Footer removed, Toaster styled with solid border.
+- `components/navigation.tsx` ï¿½ minimal fixed top bar for public pages.
+- `app/page.tsx` ï¿½ hero + stats bar + 6-feature grid + CTA + footer. No gradients, all solid borders.
+- `app/auth/login/page.tsx` ï¿½ flat centered card, rounded-full CTA.
+- `components/side-nav.tsx` ï¿½ `SideNav` + `DashboardLayout`. lg: fixed 224px left sidebar; mobile: hamburger + slide-in drawer. Active state: border-r-2 primary.
 
 **Stats components rebuilt:**
-- `components/stats/top-tracks.tsx` — 3-tab time range, rank + album art + duration + popularity bar (h-0.5), hover Spotify link, loading skeletons, error state. Wrapped in ErrorBoundary.
-- `components/stats/top-artists.tsx` — same pattern, round avatars, genre row. Wrapped in ErrorBoundary.
-- `components/stats/genre-cloud.tsx` — uses `deriveGenreCounts()`, 20-item ranked list with relative width bars. Wrapped in ErrorBoundary.
+- `components/stats/top-tracks.tsx` ï¿½ 3-tab time range, rank + album art + duration + popularity bar (h-0.5), hover Spotify link, loading skeletons, error state. Wrapped in ErrorBoundary.
+- `components/stats/top-artists.tsx` ï¿½ same pattern, round avatars, genre row. Wrapped in ErrorBoundary.
+- `components/stats/genre-cloud.tsx` ï¿½ uses `deriveGenreCounts()`, 20-item ranked list with relative width bars. Wrapped in ErrorBoundary.
 
 **Error boundary:**
-- `components/error-boundary.tsx` — React class component. Shows error + "Try again" button. Used to wrap all stats components.
+- `components/error-boundary.tsx` ï¿½ React class component. Shows error + "Try again" button. Used to wrap all stats components.
 
 **Heatmap page:**
-- `components/stats/listening-heatmap.tsx` — 7×24 grid from `deriveHeatmap(data.items)`. Color scale: `bg-muted/60` ? `#0a3320` ? `#0d5c35` ? `#12994e` ? `bg-primary`. Day/hour labels, legend, peak stat, empty state. Horizontal scroll on mobile.
-- `app/heatmap/page.tsx` — DashboardLayout + header + heatmap card.
+- `components/stats/listening-heatmap.tsx` ï¿½ 7ï¿½24 grid from `deriveHeatmap(data.items)`. Color scale: `bg-muted/60` ? `#0a3320` ? `#0d5c35` ? `#12994e` ? `bg-primary`. Day/hour labels, legend, peak stat, empty state. Horizontal scroll on mobile.
+- `app/heatmap/page.tsx` ï¿½ DashboardLayout + header + heatmap card.
 
 **Mood page:**
-- `components/stats/mood-bars.tsx` — pulls `useTopTracks("short_term")` + `useAudioFeatures(trackIds)` ? `deriveMoodProfile()`. 5-bar horizontal layout (Happiness, Energy, Danceability, Acousticness, Instrumental). Low/high scale labels, 3-stat summary grid, footnote. Wrapped in ErrorBoundary.
-- `app/mood/page.tsx` — DashboardLayout + header + mood card.
+- `components/stats/mood-bars.tsx` ï¿½ pulls `useTopTracks("short_term")` + `useAudioFeatures(trackIds)` ? `deriveMoodProfile()`. 5-bar horizontal layout (Happiness, Energy, Danceability, Acousticness, Instrumental). Low/high scale labels, 3-stat summary grid, footnote. Wrapped in ErrorBoundary.
+- `app/mood/page.tsx` ï¿½ DashboardLayout + header + mood card.
 
 **Routing:** `/heatmap` and `/mood` already in `middleware.ts` PROTECTED_PATHS.
 
@@ -205,39 +205,39 @@ Follow the attached stitch design files. Use solid colors, no gradients, no grad
 
 | Phase | Status |
 |-------|--------|
-| Phase 1 — Scaffold | ? Complete |
-| Phase 2 — Auth + React Query + API | ? Complete |
-| Phase 3 — Architecture + Dashboard | ? Complete |
-| Phase 4 — Design Overhaul + Analytics | ? Complete |
-| Phase 5 — Personality Card | ? Not started |
+| Phase 1 ï¿½ Scaffold | ? Complete |
+| Phase 2 ï¿½ Auth + React Query + API | ? Complete |
+| Phase 3 ï¿½ Architecture + Dashboard | ? Complete |
+| Phase 4 ï¿½ Design Overhaul + Analytics | ? Complete |
+| Phase 5 ï¿½ Personality Card | ? Not started |
 
 
 ---
 
-## Prompt 6 (Phase 5 — Shareable Personality Card)
+## Prompt 6 (Phase 5 ï¿½ Shareable Personality Card)
 
 Start Phase 5: Shareable Personality Card (personality algorithm + card design + html2canvas PNG export). Update ai-logs and context.md after.
 
 ## Response
 
-**Phase 5 — Complete. All files produced with 0 TypeScript errors.**
+**Phase 5 ï¿½ Complete. All files produced with 0 TypeScript errors.**
 
 ### Files Created
 
-**`lib/spotify/personality.ts`** — Personality algorithm:
+**`lib/spotify/personality.ts`** ï¿½ Personality algorithm:
 - Input: `MoodProfile` + `NormalizedTrack[]` (top tracks for avg popularity)
 - Computes: `obscurity` (100 - avgPopularity), `energy`, `groove` (danceability), `valence`, `acoustic`
 - 9 named archetypes: The Alchemist, The Groovemaster, The Euphoric, The Dreamer, The Nostalgist, The Philosopher, The Seeker, The Tastemaker, The Mainstreamer + The Balanced fallback
-- Each archetype: `archetype` title, `description`, `traits { obscurity, energy, groove }`, `auraScore` (weighted blend 0–100)
+- Each archetype: `archetype` title, `description`, `traits { obscurity, energy, groove }`, `auraScore` (weighted blend 0ï¿½100)
 
-**`components/stats/personality-card.tsx`** — Shareable card UI:
-- `forwardRef` component — parent passes ref to html2canvas
+**`components/stats/personality-card.tsx`** ï¿½ Shareable card UI:
+- `forwardRef` component ï¿½ parent passes ref to html2canvas
 - Fixed 420px width for consistent export
 - Sections: green accent bar, avatar+username+aura score, archetype title+description, 3 trait bars (Obscurity highlighted in primary green, Energy+Groove in muted), top 3 genre pills (first pill primary-accented), top 3 catalyst tracks, footer with branding
 - `crossOrigin="anonymous"` on all images for html2canvas CORS
 - Pure flat design: `bg-card`, `border-border`, no shadows/gradients
 
-**`app/card/page.tsx`** — Card page:
+**`app/card/page.tsx`** ï¿½ Card page:
 - Data: `useTopTracks("short_term")` + `useTopArtists("short_term")` + `useAudioFeatures(trackIds)` + `useSpotifyProfile()`
 - Derives: `MoodProfile` ? `derivePersonality()` ? `PersonalityResult`
 - Loading: `CardSkeleton` (full card outline skeleton)
@@ -247,10 +247,10 @@ Start Phase 5: Shareable Personality Card (personality algorithm + card design +
 - Share: Web Share API with `navigator.canShare` check, fallback to download
 - Personality summary grid (Archetype, Energy, Groove, Obscurity stats)
 
-**`middleware.ts`** — Added `/card` to `PROTECTED_PATHS`
+**`middleware.ts`** ï¿½ Added `/card` to `PROTECTED_PATHS`
 
 ### Architecture Notes
-- html2canvas is dynamically imported only when the user clicks Download/Share — zero bundle overhead at page load
+- html2canvas is dynamically imported only when the user clicks Download/Share ï¿½ zero bundle overhead at page load
 - `crossOrigin="anonymous"` on `<img>` tags required for html2canvas to read pixel data from Spotify CDN images
 - `/card` route is now protected by middleware alongside `/dashboard`, `/heatmap`, `/mood`
 
@@ -258,11 +258,11 @@ Start Phase 5: Shareable Personality Card (personality algorithm + card design +
 
 | Phase | Status |
 |-------|--------|
-| Phase 1 — Scaffold | Complete |
-| Phase 2 — Auth + React Query + API | Complete |
-| Phase 3 — Architecture + Dashboard | Complete |
-| Phase 4 — Design Overhaul + Analytics | Complete |
-| Phase 5 — Personality Card | Complete |
+| Phase 1 ï¿½ Scaffold | Complete |
+| Phase 2 ï¿½ Auth + React Query + API | Complete |
+| Phase 3 ï¿½ Architecture + Dashboard | Complete |
+| Phase 4 ï¿½ Design Overhaul + Analytics | Complete |
+| Phase 5 ï¿½ Personality Card | Complete |
 
 
 ---
@@ -338,9 +338,9 @@ Start Phase 6: Final polish (responsive audit, micro-interactions, error states 
 
 ---
 
-## Prompt 8 (Phase 7 — UI Polish)
+## Prompt 8 (Phase 7 ï¿½ UI Polish)
 
-**User request:** Phase 7 — UI polish, dark stats.fm-style theme aligned to design-stitch folder, error states, full responsive pass.
+**User request:** Phase 7 ï¿½ UI polish, dark stats.fm-style theme aligned to design-stitch folder, error states, full responsive pass.
 
 ## Response
 
@@ -366,7 +366,7 @@ New tokens: `--surface-container-highest: #313540`, `--surface-container-low: #1
 | `components/navigation.tsx` | Square logo, centre nav links, flat primary CTA (uppercase tracking-wider) |
 | `components/side-nav.tsx` | Active: bg-[#313540] + border-l-2 border-primary; square logo; flat hover |
 | `app/page.tsx` | Hero: "See Features" CTA, dashboard mockup; bento feature grid; flat CTAs; anchor ids |
-| `app/auth/login/page.tsx` | Full redesign matching design-stitch login_minimal — centered card, square logo, flat permissions block, flat CTA, mono footer |
+| `app/auth/login/page.tsx` | Full redesign matching design-stitch login_minimal ï¿½ centered card, square logo, flat permissions block, flat CTA, mono footer |
 | `app/dashboard/page.tsx` | Bento quick-links (gap-0 + dividers + colored accent bars); flat section tabs |
 | `components/stats/top-tracks.tsx` | Flat underline tabs; row hover bg-[#1b1f2a]; border dividers |
 | `components/stats/top-artists.tsx` | Same tab/row changes |
@@ -380,9 +380,9 @@ New tokens: `--surface-container-highest: #313540`, `--surface-container-low: #1
 | `app/not-found.tsx` | Square icon container; flat CTA (uppercase) |
 
 ### Issues Resolved
-1. JSX nesting bug in `app/page.tsx` hero section — extra `</div>` was closing the outer page div instead of the section. Fixed by complete hero section rewrite with correct indentation.
-2. Duplicate code in `app/auth/login/page.tsx` — old content appended after new content. Fixed by PowerShell truncation at first duplicate declaration.
-3. `mood-bars.tsx` TS2322 — `keyof ReturnType<typeof deriveMoodProfile>` resolved to `never` because the function returns `MoodProfile | null`. Fixed by importing `MoodProfile` type directly and using `keyof MoodProfile`.
+1. JSX nesting bug in `app/page.tsx` hero section ï¿½ extra `</div>` was closing the outer page div instead of the section. Fixed by complete hero section rewrite with correct indentation.
+2. Duplicate code in `app/auth/login/page.tsx` ï¿½ old content appended after new content. Fixed by PowerShell truncation at first duplicate declaration.
+3. `mood-bars.tsx` TS2322 ï¿½ `keyof ReturnType<typeof deriveMoodProfile>` resolved to `never` because the function returns `MoodProfile | null`. Fixed by importing `MoodProfile` type directly and using `keyof MoodProfile`.
 
 ### TypeScript Status
 All Phase 7 files: **0 errors**.
@@ -402,7 +402,7 @@ Pre-existing errors (not introduced by Phase 7): `@/lib/stripe` missing, `@radix
 
 ---
 
-## Prompt 9 (Bug Fix — Post Phase 7)
+## Prompt 9 (Bug Fix ï¿½ Post Phase 7)
 
 **User report:** Runtime Error: The default export is not a React Component in "/auth/login/page" + request for full senior-tester audit.
 
@@ -414,44 +414,111 @@ Systematic audit of all pages, components, hooks, contexts, and layout files. 7 
 
 ### Bugs Fixed
 
-**Bug 1 — CRITICAL: `app/auth/login/page.tsx` truncated (runtime crash)**
+**Bug 1 ï¿½ CRITICAL: `app/auth/login/page.tsx` truncated (runtime crash)**
 - Root cause: PowerShell `Set-Content` used during Phase 7 duplicate-removal truncated the file at offset 286, leaving only 7 import lines with no component or `export default`.
 - Symptom: "Runtime Error: The default export is not a React Component in /auth/login/page"
 - Fix: Complete file rewrite. Added `Suspense` boundary required by `useSearchParams` in Next.js App Router.
 
-**Bug 2 — `app/auth/login/page.tsx` OAuth errors not shown**
+**Bug 2 ï¿½ `app/auth/login/page.tsx` OAuth errors not shown**
 - OAuth callback redirects to `/auth/login?error=...` on failure, but the login page never read the `error` query param.
 - Fix: Added `useSearchParams()` hook + `useEffect` to extract and display the error.
 
-**Bug 3 — `app/profile/page.tsx` email type crash**
+**Bug 3 ï¿½ `app/profile/page.tsx` email type crash**
 - Supabase `User.email` is `string | undefined` but `ProfileClientProps.email` expected `string`.
 - Fix: `user={{ id: user.id, email: user.email ?? "" }}`
 
-**Bug 4 — `components/side-nav.tsx` mobile nav dot mispositioned**
+**Bug 4 ï¿½ `components/side-nav.tsx` mobile nav dot mispositioned**
 - Active indicator dot used `absolute bottom-1` but parent Link had no `relative` class.
 - All active dots from all nav items stacked on top of each other at the bottom of the `<nav>`.
 - Fix: Added `relative` to each Link in `MobileBottomNav`.
 
-**Bug 5 — `app/layout.tsx` Toaster stale colors**
+**Bug 5 ï¿½ `app/layout.tsx` Toaster stale colors**
 - After Phase 7 updated `--card` (#171c25 ? #171b26) and `--border` (#262a34 ? #353944), the Toaster `style` prop still used the old hardcoded hex values.
 - Fix: Updated to `#171b26` / `#353944`.
 
-**Bug 6 — `app/card/page.tsx` html2canvas stale bg color**
-- Both Download and Share handlers passed `backgroundColor: "#171c25"` to html2canvas — old --card hex.
+**Bug 6 ï¿½ `app/card/page.tsx` html2canvas stale bg color**
+- Both Download and Share handlers passed `backgroundColor: "#171c25"` to html2canvas ï¿½ old --card hex.
 - Fix: Updated both handlers to `#171b26`.
 
-**Bug 7 — `app/auth/check-email/page.tsx` design inconsistency**
-- Used `rounded-full` icon container and shadcn `Button` component — inconsistent with Phase 7 flat design.
+**Bug 7 ï¿½ `app/auth/check-email/page.tsx` design inconsistency**
+- Used `rounded-full` icon container and shadcn `Button` component ï¿½ inconsistent with Phase 7 flat design.
 - Fix: Square icon container, flat inline `Link` button, removed unused `Button` import.
 
 ### TypeScript Status After Fixes
 - All fixed files: **0 errors**
-- Remaining pre-existing: `@/lib/stripe` (template), `@radix-ui/react-slider` (template) — not introduced by this project
+- Remaining pre-existing: `@/lib/stripe` (template), `@radix-ui/react-slider` (template) ï¿½ not introduced by this project
 
 ### Files Modified
-- `app/auth/login/page.tsx` — full rewrite
-- `app/profile/page.tsx` — email nullish coalescing
-- `components/side-nav.tsx` — relative on mobile nav Links
-- `app/layout.tsx` — Toaster colors
-- `app/card/page.tsx` — html2canvas backgroundColor (×2)
-- `app/auth/check-email/page.tsx` — flat design alignment
+- `app/auth/login/page.tsx` ï¿½ full rewrite
+- `app/profile/page.tsx` ï¿½ email nullish coalescing
+- `components/side-nav.tsx` ï¿½ relative on mobile nav Links
+- `app/layout.tsx` ï¿½ Toaster colors
+- `app/card/page.tsx` ï¿½ html2canvas backgroundColor (ï¿½2)
+- `app/auth/check-email/page.tsx` ï¿½ flat design alignment
+---
+
+## Prompt 10 â€” OAuth login error, favicon, dev indicator, gitignore
+
+**User report:** "Error getting user profile from external provider" on login; Next.js N logo showing in browser tab.
+
+### Fixes Applied
+
+**Fix 1 â€” `supabase/config.toml` redirect URL mismatch**
+- Root cause: `site_url = "http://127.0.0.1:3000"` but app runs on `localhost:3000`. Supabase rejected the `redirectTo` URL.
+- Fix: Set `site_url = "http://localhost:3000"` and added all 4 redirect URL variants (localhost + 127.0.0.1, with and without /auth/callback).
+
+**Fix 2 â€” `app/icon.tsx` (new file) â€” Next.js N favicon**
+- Root cause: `layout.tsx` referenced `/favicon-32x32.png` etc. which don't exist in `public/`. Browser fell back to Next.js default "N" logo.
+- Fix: Created `app/icon.tsx` using `next/og` `ImageResponse` to generate a 32Ã—32 Spotify-green "S" favicon. Removed broken `icons` block from `layout.tsx` metadata.
+
+**Fix 3 â€” `next.config.ts` dev indicator removed**
+- Added `devIndicators: false` to remove the floating Next.js toolbar from the dev UI.
+
+**Fix 4 â€” `.gitignore` updated**
+- Added: IDE files (`.vscode/`, `.idea/`), local Supabase dirs (`.branches/`, `.temp/`, `migrations/`), `ai-logs/`, `*.log`, `Thumbs.db`.
+
+**Fix 5 â€” Login error message improved**
+- `app/auth/login/page.tsx`: "external provider" OAuth errors now show a clear, actionable message instead of the raw Supabase error string.
+
+### TypeScript Status
+- **0 errors** (all clear)
+
+### Files Modified
+- `supabase/config.toml` â€” redirect URLs
+- `app/icon.tsx` â€” new favicon
+- `app/layout.tsx` â€” removed broken icons metadata
+- `next.config.ts` â€” devIndicators: false
+- `.gitignore` â€” comprehensive ignore rules
+- `app/auth/login/page.tsx` â€” improved OAuth error message
+
+---
+
+## Prompt 11 â€” Vercel build failures (pnpm lockfile + Stripe + middleware)
+
+**User report:** Vercel build failing â€” `ERR_PNPM_OUTDATED_LOCKFILE` then `Module not found: Can't resolve '@/lib/stripe'`.
+
+### Fixes Applied
+
+**Fix 1 â€” `pnpm-lock.yaml` regenerated**
+- Root cause: 3 dependencies (`@tanstack/react-query`, `recharts`, `html2canvas`) were in `package.json` but missing from the committed lockfile.
+- Fix: Ran `pnpm install` locally to regenerate lockfile; committed `pnpm-lock.yaml` + new `pnpm-workspace.yaml`.
+
+**Fix 2 â€” `app/api/account/delete/route.ts` â€” Stripe removed**
+- Root cause: Route imported `@/lib/stripe` which was never created (template leftover). Turbopack builds all routes, so this caused a hard build failure.
+- Fix: Removed Stripe import and Stripe customer deletion logic. Account deletion now only calls Supabase admin `deleteUser`.
+
+**Fix 3 â€” `middleware.ts` â†’ `proxy.ts` rename**
+- Next.js 16 deprecates the `middleware` file convention in favour of `proxy`. Renamed via `git mv` to eliminate the deprecation warning. API is identical.
+
+**Fix 4 â€” `components/ui/slider.tsx` deleted**
+- Depended on `@radix-ui/react-slider` which was never installed (template leftover). Not imported anywhere in the project. Deleted to achieve 0 TypeScript errors.
+
+### TypeScript Status
+- **0 errors** â€” first completely clean tsc run in project history
+
+### Files Modified
+- `pnpm-lock.yaml` â€” regenerated
+- `pnpm-workspace.yaml` â€” new (sharp build approval)
+- `app/api/account/delete/route.ts` â€” Stripe removed
+- `middleware.ts` â†’ `proxy.ts` â€” renamed
+- `components/ui/slider.tsx` â€” deleted
