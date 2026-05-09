@@ -39,25 +39,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      console.warn("[AuthContext] Loading timeout - forcing isLoading to false")
-      setIsLoading(false)
-    }, 10000)
+    let timeoutId: ReturnType<typeof setTimeout>
 
     const init = async () => {
+      timeoutId = setTimeout(() => {
+        setIsLoading(false)
+      }, 8000)
+
       try {
         const { data: { session }, error: sessionError } = await supabase.auth.getSession()
         if (sessionError) {
           console.error("[AuthContext] Error getting session:", sessionError)
           applySession(null)
-          setIsLoading(false)
-          return
+        } else {
+          applySession(session)
         }
-        applySession(session)
-        setIsLoading(false)
       } catch (error) {
         console.error("[AuthContext] Init error:", error)
         applySession(null)
+      } finally {
+        clearTimeout(timeoutId)
         setIsLoading(false)
       }
     }
@@ -71,7 +72,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     })
 
     return () => {
-      clearTimeout(timeout)
+      clearTimeout(timeoutId)
       subscription.unsubscribe()
     }
   }, [applySession])
